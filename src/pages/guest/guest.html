@@ -1,0 +1,36 @@
+<!--
+  Generated template for the GuestPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar class="flex">
+    <ion-thumbnail float-right>
+      <img src="../../assets/imgs/logoicon.png" height="30px" padding-right="1px"/>
+    </ion-thumbnail>
+    <ion-title item-left class="titleicon">Guest</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding class="background">
+  <ion-grid>
+    <ion-col class="center">
+      <ion-row id="blank1"></ion-row>
+      <ion-row>
+        <ion-item>
+          <ion-label floating>Room Code</ion-label>
+          <ion-input class="input" id='roomInput' type="text" [(ngModel)]="roomCode"></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row id="blank2"></ion-row>
+      <ion-row>
+        <button ion-button block (click)="isCorrectRoomInput(this.roomCode, this.idList)">Enter Room</button>
+      </ion-row>
+      <ion-row>
+        <p id='output'></p>
+      </ion-row>
+    </ion-col>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,65 @@
+<!--
+  Generated template for the HostSongListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-thumbnail float-left>
+      <img src="../../assets/imgs/logoicon.png" height="30px" padding-left="1px"/>
+    </ion-thumbnail>
+    <ion-title item-left class="titleicon" id="room">{{title}}</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="exitConfirm()">
+        <!--https://ionicframework.com/docs/ionicons/-->
+        <ion-icon name="close-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding class="background">
+  <ion-fab right bottom>
+    <button ion-fab class="fab" (click)="goToAddSongPage()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+  <ion-list>
+<!----------------------------------BUTTONS FOR DELETE AND ENQUEUE--------------------------------->
+    <!--<ion-item-sliding *ngFor="let song of songList | async">-->
+      <!--<ion-item class="bottom-border">-->
+        <!--{{song.title}}-->
+        <!--<div item-right>{{song.upVotes}}</div>-->
+        <!--<div item-right>UP</div>-->
+        <!--<div item-right>|</div>-->
+        <!--<div item-right>DOWN</div>-->
+        <!--<div item-right>{{song.downVotes}}</div>-->
+      <!--</ion-item>-->
+      <!--<ion-item-options side="left">-->
+        <!--<button ion-button class="delete" (click)="deleteSong(song)">Delete</button>-->
+      <!--</ion-item-options>-->
+
+      <!--<ion-item-options side="right">-->
+        <!--<button ion-button (click)="addToQueue(song)">+Queue</button>-->
+      <!--</ion-item-options>-->
+    <!--</ion-item-sliding>-->
+    <!--------------------------------------------------------------------------------------------------->
+    <!------------------------SWIPE TO DELETE AND ENQUEUE------------------------------------------------>
+    <ion-list *ngFor="let song of songList | async; trackBy:trackByFbKey" [class.selected]="song" >
+      <host-song-item [song]="song" (swipe)="deleteSong(song)" class="bottom-border"></host-song-item>
+        <!--<div>&nbsp;&nbsp;&nbsp;&nbsp; {{song.title}}<br/>-->
+          <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <small>{{song.artist}}</small></div>-->
+        <!--<div item-right>{{song.upVotes}}</div>-->
+        <!--<div item-right>UP</div>-->
+        <!--<div item-right>|</div>-->
+        <!--<div item-right>DOWN</div>-->
+        <!--<div item-right>{{song.downVotes}}</div>-->
+    </ion-list>
+    <ion-item no-lines height="100px"></ion-item>
+    <!--------------------------------------------------------------------------------------------------->
+  </ion-list>
+</ion-content>

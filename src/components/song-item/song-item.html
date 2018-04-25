@@ -1,0 +1,12 @@
+<ion-item (swipeleft)="toggleVoteAnim(true)" (swiperight)="toggleVoteAnim(false)" [@myvote]="voteState">
+
+  <div>&nbsp;&nbsp;&nbsp;&nbsp; {{song.title}}<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <small>{{song.artist}}</small></div>
+  <div item-right>{{song.upVotes}}</div>
+  <!--<button clear item-right ion-button icon-only (click)="vote(song, true)" class="votebutton"><ion-icon name="arrow-dropup-circle"></ion-icon></button>-->
+  <!--<button clear item-right ion-button icon-only (click)="vote(song, false)" class="votebutton"><ion-icon name="arrow-dropdown-circle"></ion-icon></button>-->
+  <div item-right>UP</div>
+  <div item-right>|</div>
+  <div item-right>DOWN</div>
+  <div item-right>{{song.downVotes}}</div>
+</ion-item>
