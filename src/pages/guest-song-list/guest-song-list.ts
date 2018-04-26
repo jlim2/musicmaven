@@ -55,7 +55,7 @@ export class GuestSongListPage {
    * Alert pops up AFTER directing the guest to the host-guest-page
    */
   async kickedoutConfirm() {
-    if (this.navCtrl.getActive().name == "GuestPage" || this.navCtrl.getActive().name == "GuestSongListPage" || this.navCtrl.getActive().name == "addSongPage") {
+    if (this.navCtrl.getActive().name == "GuestPage" || this.navCtrl.getActive().name == "GuestSongListPage") {
       this.room.subscribe((room) => {
         if (room == null) {
           let alert = this.alertCtrl.create({

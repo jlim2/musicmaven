@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { GuestSongListPage } from '../guest-song-list/guest-song-list';
-import { HostSongListPage} from '../host-song-list/host-song-list';
+import { HostSongListPage } from '../host-song-list/host-song-list';
 import { FirebaseProvider } from "../../providers/firebase/firebase";
 import { Song } from "../../interfaces/song";
 import { SessionDataProvider } from "../../providers/session-data/session-data";
+import { HostGuestPage } from "../host-guest/host-guest";
+
 
 /**
  * A host or guest can add a song to the song list of the current room.
@@ -25,8 +27,8 @@ export class AddSongPage {
   roomId : string;
   title: string;
 
-  // roomCode : String;
-  //songList : AngularFireList<any>
+  room: any;
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public alertCtrl: AlertController,
@@ -37,6 +39,10 @@ export class AddSongPage {
     this.HostSongListButton = HostSongListPage;
 
     this.roomId = this.sDProvider.getRoomCode();
+
+    this.room = this.fBProvider.getRoom(this.roomId).valueChanges();
+    this.kickedoutConfirm(); // kick out the guest if the party has ended
+
 
   }
 
@@ -158,6 +164,37 @@ export class AddSongPage {
       this.badSongAlert();
     }
   }
+
+  /**
+   * Displays an alert to guests when the room is closed.
+   * Alert pops up AFTER directing the guest to the host-guest-page
+   * Copied from guest-song-lis.ts
+   */
+  async kickedoutConfirm() {
+    if (this.navCtrl.getActive().name == "AddSongPage") {
+      this.room.subscribe((room) => {
+        if (room == null) {
+          let alert = this.alertCtrl.create({
+            title: 'Party Ended',
+            message: 'The host has ended the party. Hope you had a wonderful time!',
+            buttons: [{
+              text: 'OK',
+              role: 'ok',
+              handler: () => {
+                console.log('OK clicked');
+              }
+            }]
+          }).present().then(() => {
+            console.log("alert presented");
+            this.navCtrl.insert(0, HostGuestPage).then(() => {
+              this.navCtrl.popToRoot();
+            });
+          });
+        }
+      });
+    }
+  }
+
 
   /**
    * If host, go to host song list page, otherwise GuestSongListPage
