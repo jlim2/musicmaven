@@ -7,7 +7,7 @@ import { AlertController } from 'ionic-angular';
 import { SessionDataProvider } from "../../providers/session-data/session-data";
 import { FirebaseProvider } from "../../providers/firebase/firebase";
 /**
- * Generated class for the GuestPage page.
+ * Guests input the room code and enter the room.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -65,7 +65,6 @@ export class GuestPage {
    */
   isCorrectRoomInput(roomInput: string, idList: String[]) {
     let lowerRoomInput = roomInput.toLowerCase(); // Make the input case-insensitive
-    // console.log("Inside START isCorrectRoomInput(" + lowerRoomInput +", " + idList +")"); //DEBUG
     console.log("roomInput", lowerRoomInput);
     let found = idList.indexOf(lowerRoomInput);
     console.log("found", found);
@@ -85,7 +84,6 @@ export class GuestPage {
       });
       alert.present();
     }
-    // console.log("Inside END isCorrectRoomInput()");  //DEBUG
 
   }
 

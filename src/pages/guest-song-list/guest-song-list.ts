@@ -3,13 +3,11 @@ import { AlertController, IonicPage, NavController } from 'ionic-angular';
 import { AddSongPage } from "../add-song/add-song";
 import { FirebaseProvider } from "../../providers/firebase/firebase"
 import { SessionDataProvider } from "../../providers/session-data/session-data";
-
 import { HostGuestPage } from "../host-guest/host-guest";
 
 
 /**
- * Generated class for the GuestSongListPage page. Displays the room-specific
- * song list for Guest
+ * Displays the room-specific song list for Guest. Allows for voting on songs.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -53,6 +51,7 @@ export class GuestSongListPage {
   }
 
   /**
+   * Displays an alert to guests when the room is closed.
    * Alert pops up AFTER directing the guest to the host-guest-page
    */
   async kickedoutConfirm() {
@@ -81,7 +80,7 @@ export class GuestSongListPage {
   }
 
   /**
-   * Takes user to the main page and deletes the room.
+   * Takes user to the main page.
    */
   exitRoom() {
     console.log("exiting room " + this.roomId);
@@ -119,40 +118,31 @@ export class GuestSongListPage {
 
   /**
    * Deletes a song from the list (and the Firebase)
-   * @param song - Song object
+   * @param song - Song object to be deleted
    */
   deleteSong(song) {
-    // console.log("guestSongListPage deleteSong(song): "+song.fbKey); // DEBUG
     this.fBProvider.deleteSong(song, this.roomId);
   }
 
   /**
    * Votes on a song.
-   * @param song - Song object
+   * @param song - Song object to be voted on
    * @param isUpVote - Boolean. True if an upvote, false if a downvote.
    */
   vote(song, isUpVote){
-    // await this.delay(500);
     let votes = this.sDProvider.getSongVotes(song);
-    // console.log(song.title + " is the song that we are getting votes for "+votes);
     if(votes == 0){
-      // console.log("song has no votes");
       if(isUpVote){
         this.sDProvider.updateSongVotes(song, 1);
         // song.upVotes++;
-        console.log("was an up vote so "+song.title+" has "+this.sDProvider.getSongVotes(song));
-        // this.toggleDownvoteAnim();
       }
       else{
         this.sDProvider.updateSongVotes(song, -1);
         // song.downVotes++;
-        console.log("was a down vote so "+song.title+" has "+this.sDProvider.getSongVotes(song));
-        // this.toggleUpvoteAnim();
       }
       this.fBProvider.updateVote(song, this.roomId, isUpVote);
     }
     else if(votes==1){
-      // console.log("song has up vote");
       if(!isUpVote){
         this.sDProvider.updateSongVotes(song, -1);
         // song.upVotes--;
@@ -161,7 +151,6 @@ export class GuestSongListPage {
       }
     }
     else{
-      // console.log("song has down vote");
       if(isUpVote){
         this.sDProvider.updateSongVotes(song, 1);
         // song.upVotes++;
@@ -169,9 +158,14 @@ export class GuestSongListPage {
         this.fBProvider.switchVote(song, this.roomId, isUpVote);
       }
     }
-    // console.log(song.title + " has "+ this.sDProvider.getSongVotes(song));
   }
 
+  /**
+   * Returns the fbkey of a song for trackBy on the list.
+   * @param index
+   * @param song
+   * @returns {string | any}
+   */
   trackByFbKey(index, song) {
     return song.fbKey;
   }

@@ -1,9 +1,9 @@
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FirebaseProvider } from '../firebase/firebase';
 
 /**
- *Generated class for the SessionDataProvider provider.
+ * Provider that handles current user and session data.
  *
  * See https://angular.io/guide/dependency-injection for more info on providers
  * and Angular DI.
@@ -27,7 +27,6 @@ export class SessionDataProvider {
    */
   updateSongVotes(song, isUpVote){
     this.songVotes[song.title] = isUpVote;
-    // console.log("songVotes list has "+song.title+" "+isUpVote);
   }
 
   /**
@@ -36,13 +35,9 @@ export class SessionDataProvider {
    * @returns {number} - current session user's votes
    */
   getSongVotes(song){
-    // console.log(this.songVotes);
-    // console.log("!(song in this.songVotes)"+(!(song.title in this.songVotes))+" "+song.title+" "+this.songVotes);
     if (!(song.title in this.songVotes)){
-      // console.log(song.title+" not in song votes so added");
       this.updateSongVotes(song, 0);
     }
-    // console.log(this.songVotes);
     return this.songVotes[song.title];
   }
 

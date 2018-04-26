@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { GuestSongListPage } from '../guest-song-list/guest-song-list';
 import { HostSongListPage} from '../host-song-list/host-song-list';
@@ -8,8 +7,7 @@ import { Song } from "../../interfaces/song";
 import { SessionDataProvider } from "../../providers/session-data/session-data";
 
 /**
- * Generated class for the AddSongPage page. An user can add a song to the
- * hostsonglist and guestsonglist.
+ * A host or guest can add a song to the song list of the current room.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -24,10 +22,8 @@ export class AddSongPage {
   GuestSongListButton : any;
   HostSongListButton : any;
 
-  // songList: AngularFireList<any>;
   roomId : string;
   title: string;
-  searchResults:any[];
 
   // roomCode : String;
   //songList : AngularFireList<any>
@@ -110,7 +106,7 @@ export class AddSongPage {
 
   /**
    * Cleans the input artist string. Returns "Unknown" if no artist input.
-   * @param {string} artist
+   * @param {string} artist - the input artist
    * @returns {string}
    */
   replaceEmptyArtist(artist:string) {
@@ -123,7 +119,7 @@ export class AddSongPage {
 
   /**
    * Cleans the input song title string. Returns "Any Song" if no song title input.
-   * @param {string} song
+   * @param {string} song - the input song title
    * @returns {string}
    */
   replaceEmptySong(song: string) {
@@ -178,21 +174,4 @@ export class AddSongPage {
       });
     }
   }
-
-  // searchSpotify(event:any) {
-  //   let searchTerm = event.target.value;
-  //   console.log(searchTerm);
-  //   this.sDProvider.searchSpotify(searchTerm).subscribe(
-  //     data=>{
-  //       //this.searchResults=data.tracks.items;
-  //       this.searchResults=data['tracks'].items;
-  //       //console.log(this.searchResults);
-  //     },
-  //     error=>{
-  //       console.log(error);
-  //     }
-  //   )
-  // }
-
-
 }

@@ -1,11 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { trigger, state, style, transition, animate, group, query, stagger, keyframes} from '@angular/animations';
+import { Component, Input } from '@angular/core';
+import { trigger, state, style, transition, animate, group} from '@angular/animations';
 import { Song } from "../../interfaces/song";
-import 'web-animations-js/web-animations.min';
 
 
 /**
- * Generated class for the HostSongItemComponent component.
+ * Component used in HostSongList. Displays song information and votes. Handles delete animation.
  *
  * See https://angular.io/api/core/Component for more info on Angular
  * Components.

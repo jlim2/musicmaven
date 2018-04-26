@@ -1,12 +1,9 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 import { Song } from "../../interfaces/song";
-import { FirebaseProvider } from "../../providers/firebase/firebase"
-import { SessionDataProvider } from "../../providers/session-data/session-data";
-import 'web-animations-js/web-animations.min';
 
 /**
- * Generated class for the SongItemComponent component.
+ * Component used in GuestSongList. Displays song information and votes. Handles vote animations.
  *
  * See https://angular.io/api/core/Component for more info on Angular
  * Components.
@@ -46,7 +43,7 @@ import 'web-animations-js/web-animations.min';
 
 export class SongItemComponent implements OnInit {
 
-  @Output() change: EventEmitter<Boolean> = new EventEmitter<Boolean>();
+  @Output() vote: EventEmitter<Boolean> = new EventEmitter<Boolean>();
   @Input() song: Song;
   voteState = 'novote';
 
@@ -75,6 +72,6 @@ export class SongItemComponent implements OnInit {
         this.voteState = (this.voteState === 'upvote') ? 'downvote' : 'upvote';
       }
     }
-    this.change.emit(isUpVote);
+    this.vote.emit(isUpVote);
   }
 }
