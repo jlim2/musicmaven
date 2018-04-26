@@ -41,6 +41,7 @@ export class AddSongPage {
     this.roomId = this.sDProvider.getRoomCode();
 
     this.room = this.fBProvider.getRoom(this.roomId).valueChanges();
+    
     this.kickedoutConfirm(); // kick out the guest if the party has ended
 
 
@@ -125,15 +126,15 @@ export class AddSongPage {
 
   /**
    * Cleans the input song title string. Returns "Any Song" if no song title input.
-   * @param {string} song - the input song title
+   * @param {string} songTitle - the input song title
    * @returns {string}
    */
-  replaceEmptySong(song: string) {
-    var cleanSong = this.cleanPuncSpaceFromInputItem(song);
+  replaceEmptySong(songTitle: string) {
+    var cleanSong = this.cleanPuncSpaceFromInputItem(songTitle);
     if(cleanSong == null || cleanSong == "") {
-      song = "Any Song";
+      songTitle = "Any Song";
     }
-    return song;
+    return songTitle;
   }
 
   /**
@@ -195,7 +196,6 @@ export class AddSongPage {
     }
 
   }
-
 
   /**
    * If host, go to host song list page, otherwise GuestSongListPage
