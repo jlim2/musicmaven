@@ -170,7 +170,7 @@ export class AddSongPage {
    * Alert pops up AFTER directing the guest to the host-guest-page
    * Copied from guest-song-lis.ts
    */
-  async kickedoutConfirm() {
+  kickedoutConfirm() {
     if (this.navCtrl.getActive().name == "AddSongPage") {
       this.room.subscribe((room) => {
         if (room == null) {
@@ -179,20 +179,21 @@ export class AddSongPage {
             message: 'The host has ended the party. Hope you had a wonderful time!',
             buttons: [{
               text: 'OK',
-              role: 'ok',
-              handler: () => {
+             role: 'ok',
+             handler: () => {
                 console.log('OK clicked');
               }
-            }]
+           }]
           }).present().then(() => {
-            console.log("alert presented");
-            this.navCtrl.insert(0, HostGuestPage).then(() => {
+           console.log("alert presented");
+           this.navCtrl.insert(0, HostGuestPage).then(() => {
               this.navCtrl.popToRoot();
             });
           });
         }
       });
     }
+
   }
 
 

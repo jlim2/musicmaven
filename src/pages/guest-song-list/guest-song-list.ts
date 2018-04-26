@@ -54,7 +54,7 @@ export class GuestSongListPage {
    * Displays an alert to guests when the room is closed.
    * Alert pops up AFTER directing the guest to the host-guest-page
    */
-  async kickedoutConfirm() {
+  kickedoutConfirm() {
     if (this.navCtrl.getActive().name == "GuestPage" || this.navCtrl.getActive().name == "GuestSongListPage") {
       this.room.subscribe((room) => {
         if (room == null) {
