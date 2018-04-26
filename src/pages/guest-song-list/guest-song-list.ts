@@ -55,7 +55,7 @@ export class GuestSongListPage {
    * Alert pops up AFTER directing the guest to the host-guest-page
    */
   async kickedoutConfirm() {
-    if (this.navCtrl.getActive().name == "GuestPage" || this.navCtrl.getActive().name == "GuestSongListPage") {
+    if (this.navCtrl.getActive().name == "GuestPage" || this.navCtrl.getActive().name == "GuestSongListPage" || this.navCtrl.getActive().name == "addSongPage") {
       this.room.subscribe((room) => {
         if (room == null) {
           let alert = this.alertCtrl.create({
@@ -131,30 +131,24 @@ export class GuestSongListPage {
    */
   vote(song, isUpVote){
     let votes = this.sDProvider.getSongVotes(song);
-    if(votes == 0){
+    if (votes == 0) {
       if(isUpVote){
         this.sDProvider.updateSongVotes(song, 1);
-        // song.upVotes++;
       }
-      else{
+      else {
         this.sDProvider.updateSongVotes(song, -1);
-        // song.downVotes++;
       }
       this.fBProvider.updateVote(song, this.roomId, isUpVote);
     }
-    else if(votes==1){
+    else if (votes == 1) {
       if(!isUpVote){
         this.sDProvider.updateSongVotes(song, -1);
-        // song.upVotes--;
-        // song.downVotes++;
         this.fBProvider.switchVote(song, this.roomId, isUpVote);
       }
     }
-    else{
+    else {
       if(isUpVote){
         this.sDProvider.updateSongVotes(song, 1);
-        // song.upVotes++;
-        // song.downVotes--;
         this.fBProvider.switchVote(song, this.roomId, isUpVote);
       }
     }

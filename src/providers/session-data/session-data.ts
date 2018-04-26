@@ -26,7 +26,8 @@ export class SessionDataProvider {
    * @param isUpVote - 1 for an upvote, 0 for no vote, -1 for downvote
    */
   updateSongVotes(song, isUpVote){
-    this.songVotes[song.title] = isUpVote;
+    let titleAndArtistString = song.title + song.artist;
+    this.songVotes[titleAndArtistString] = isUpVote;
   }
 
   /**
@@ -35,10 +36,12 @@ export class SessionDataProvider {
    * @returns {number} - current session user's votes
    */
   getSongVotes(song){
-    if (!(song.title in this.songVotes)){
+    let titleAndArtistString = song.title + song.artist;
+    console.log("getSongVotes song.title+song.artist: ", titleAndArtistString)
+    if (!(titleAndArtistString in this.songVotes)){
       this.updateSongVotes(song, 0);
     }
-    return this.songVotes[song.title];
+    return this.songVotes[titleAndArtistString];
   }
 
   /**
