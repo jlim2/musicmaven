@@ -1,1 +1,2 @@
-# musicmaven
+# MusicMaven
+# Instruction Guide
