@@ -56,7 +56,9 @@ export class FirebaseProvider {
    * @returns {AngularFireList<Song[]>}
    */
   getSongList(roomCode) {
-    return this.afDB.list<Song []>('/rooms/'+roomCode+'/songs');
+    return this.afDB.list<Song []>('/rooms/'+roomCode+'/songs', ref => {
+      return ref.orderByChild('upVotes')
+    })
   }
 
   /**
