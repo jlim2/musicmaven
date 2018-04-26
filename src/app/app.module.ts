@@ -18,6 +18,7 @@ import { SessionDataProvider } from '../providers/session-data/session-data';
 import { SongItemComponent } from '../components/song-item/song-item'
 import { HostSongItemComponent } from '../components/host-song-item/host-song-item';
 import 'web-animations-js/web-animations.min';
+import { SortByVotesPipe } from '../pipes/sort-by-votes/sort-by-votes'
 
 
 import { HttpClientModule } from '@angular/common/http'
@@ -42,7 +43,8 @@ export const firebaseConfig = {
     HostSongListPage,
     AddSongPage,
     SongItemComponent,
-    HostSongItemComponent
+    HostSongItemComponent,
+    SortByVotesPipe
   ],
   imports: [
     BrowserModule,

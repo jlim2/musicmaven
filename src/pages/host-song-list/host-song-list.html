@@ -49,7 +49,7 @@
     <!--</ion-item-sliding>-->
     <!--------------------------------------------------------------------------------------------------->
     <!------------------------SWIPE TO DELETE AND ENQUEUE------------------------------------------------>
-    <ion-list *ngFor="let song of songList | async; trackBy:trackByFbKey" [class.selected]="song" >
+    <ion-list *ngFor="let song of songList| async | sortByVotes; trackBy:trackByFbKey" [class.selected]="song" >
       <host-song-item [song]="song" (swipe)="deleteSong(song)" class="bottom-border"></host-song-item>
         <!--<div>&nbsp;&nbsp;&nbsp;&nbsp; {{song.title}}<br/>-->
           <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <small>{{song.artist}}</small></div>-->
