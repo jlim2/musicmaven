@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Song } from '../../interfaces/song';
 
-/*
-  Generated class for the FirebaseProvider provider.
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
+/**
+ * Provider that handles all interactions with Firebase.
+ *
+ * See https://angular.io/guide/dependency-injection for more info on providers
+ * and Angular DI.
+ */
 
 
 @Injectable()
@@ -89,9 +90,7 @@ export class FirebaseProvider {
    */
   updateVote(song, roomId, isUpVote){
     const songRef = this.afDB.database.ref('/').child('rooms').child(roomId).child('songs').child(song.fbKey);
-    // console.log("updating song in firebase");
     if(isUpVote) {
-      // console.log("is up vote");
       // songRef.update({upVotes:++song.upVotes});
       // songRef.update({upVotes:song.upVotes});
       songRef.child('upVotes').transaction(function(currentUpVotes){
@@ -165,8 +164,6 @@ export class FirebaseProvider {
    * @returns {any[]} - a list of room ids
    */
   getRoomIdList() {
-    //fetches a list of roomCodes (roomIds) that would be used to verify if the
-    //user is trying to enter the correct room
     let i = 0;
     let idList = [];
     this.afDB.list("/rooms").valueChanges()

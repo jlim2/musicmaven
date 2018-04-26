@@ -7,9 +7,7 @@ import { HostGuestPage } from "../host-guest/host-guest";
 
 
 /**
- * Generated class for the HostSongListPage page. Displays the room-specific
- * song list for Host (Identical to Guest's but has a functionality to add
- * songs to Spotify Queue.
+ * Displays the room-specific song list for the host. Allows deleting songs.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -110,6 +108,12 @@ export class HostSongListPage {
     // setTimeout(this.deleteSong(song), '1s');
   }
 
+  /**
+   * Returns the fbkey of a song for trackBy on the list.
+   * @param index
+   * @param song
+   * @returns {string | any}
+   */
   trackByFbKey(index, song) {
     return song.fbKey;
   }
