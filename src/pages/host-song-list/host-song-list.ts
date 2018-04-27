@@ -102,10 +102,8 @@ export class HostSongListPage {
    * @param song
    */
   async deleteSong(song) {
-    // console.log("hostSongListPage deleteSong(song): "+song.fbKey); // DEBUG
     await this.delay(300);
     this.fBProvider.deleteSong(song, this.roomId);
-    // setTimeout(this.deleteSong(song), '1s');
   }
 
   /**
