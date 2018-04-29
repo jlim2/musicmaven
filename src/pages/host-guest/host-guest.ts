@@ -86,8 +86,8 @@ export class HostGuestPage {
     this.sDProvider.setHost(true);
     //Set HostSongPage as root https://stackoverflow.com/questions/37296999/ionic-2-disabling-back-button-for-a-specific-view
     let alert = this.alertCtrl.create({
-      title: 'Room Created',
-      message: 'Your room code is "' +this.id+ '"',
+      title: 'Room  "'+this.id+'" Created',
+      message: 'Tell your guests your room code! Enjoy the party.',
       buttons: ["OK"]
     });
     alert.present();
