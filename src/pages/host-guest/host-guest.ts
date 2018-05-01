@@ -29,6 +29,7 @@ export class HostGuestPage {
   rooms: Observable<any[]>;
   idList: Array<String>;
   found: number = -1;
+  ROOMCODE_LENGTH: number = 5;
 
   constructor(
     public navCtrl: NavController,
@@ -69,9 +70,8 @@ export class HostGuestPage {
     var possible = "abcdefghijklmnopqrstuvwxyz0123456789";
 
     //TODO: make the length a constant to avoid hardcoding
-    for (var i = 0; i < 5; i++)
+    for (var i = 0; i < this.ROOMCODE_LENGTH; i++)
       text += possible.charAt(Math.floor(Math.random() * possible.length));
-
     return text;
   }
 
@@ -84,7 +84,7 @@ export class HostGuestPage {
     this.fBProvider.genRoom(this.id);
     this.sDProvider.setRoomCode(this.id);
     this.sDProvider.setHost(true);
-    //Set HostSongPage as root https://stackoverflow.com/questions/37296999/ionic-2-disabling-back-button-for-a-specific-view
+    //Set HostSongPage as root (https://stackoverflow.com/questions/37296999/ionic-2-disabling-back-button-for-a-specific-view)
     let alert = this.alertCtrl.create({
       title: 'Room  "'+this.id+'" Created',
       message: 'Tell your guests this room code! Enjoy the party.',
