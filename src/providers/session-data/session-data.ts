@@ -22,7 +22,6 @@ export class SessionDataProvider {
   /**
    * Updates the vote on a song from the current session user.
    * @param song - a Song object
-   * @param roomId - ID of current room
    * @param isUpVote - 1 for an upvote, 0 for no vote, -1 for downvote
    */
   updateSongVotes(song, isUpVote){
@@ -51,10 +50,10 @@ export class SessionDataProvider {
 
   /**
    * Sets the current user as the host
-   * @param hostBoolIn
+   * @param hostBoolInput
    */
-  setHost(hostBoolIn) {
-    this.hostBool = hostBoolIn;
+  setHost(hostBoolInput) {
+    this.hostBool = hostBoolInput;
   }
 
   /**
@@ -67,9 +66,9 @@ export class SessionDataProvider {
 
   /**
    * Setter for the current session's room code
-   * @param roomCodeIn
+   * @param roomCodeInput
    */
-  setRoomCode(roomCodeIn) {
-    this.roomCode = roomCodeIn;
+  setRoomCode(roomCodeInput) {
+    this.roomCode = roomCodeInput;
   }
 }
