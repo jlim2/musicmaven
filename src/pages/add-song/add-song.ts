@@ -220,7 +220,7 @@ export class AddSongPage {
    */
   goToSongListPage(){
     console.log("Trying to go to Song List page with "+this.roomCode);
-    if (this.sDProvider.isHost() == true) {
+    if (this.sDProvider.isHost == true) {
       this.navCtrl.setRoot(HostSongListPage, {roomId: this.roomCode}).then(() => {
         this.navCtrl.popToRoot();
       });

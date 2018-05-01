@@ -35,7 +35,7 @@ export class GuestSongListPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad GuestSongListPage');
     console.log('Current room: '+this.roomCode);
-    console.log('Host?: '+this.sDProvider.isHost());
+    console.log('Host?: '+this.sDProvider.isHost);
     this.roomTitle = "Guest: "+this.roomCode;
     this.songList = this.fBProvider.getSongList(this.roomCode).valueChanges();
   }

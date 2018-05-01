@@ -11,7 +11,7 @@ import { FirebaseProvider } from '../firebase/firebase';
 @Injectable()
 export class SessionDataProvider {
   public roomCode: string;
-  hostBool: boolean;
+  isHost: boolean;
   songVotes : Object;
 
   constructor(public http: HttpClient, public fBProvider: FirebaseProvider) {
@@ -33,19 +33,11 @@ export class SessionDataProvider {
    * @param song - a Song object
    * @returns {number} - current session user's votes
    */
-  getSongVotes(song){
-    if (!(song.fbKey in this.songVotes)){
+  getSongVotes(song) {
+    if (!(song.fbKey in this.songVotes)) {
       this.updateSongVotes(song, 0);
     }
     return this.songVotes[song.fbKey];
-  }
-
-  /**
-   * Is the current user a host or a guest?
-   * @returns {boolean} - true if host, false if guest
-   */
-  isHost() {
-    return this.hostBool;
   }
 
   /**
@@ -53,6 +45,6 @@ export class SessionDataProvider {
    * @param hostBoolInput
    */
   setHost(hostBoolInput) {
-    this.hostBool = hostBoolInput;
+    this.isHost = hostBoolInput;
   }
 }
