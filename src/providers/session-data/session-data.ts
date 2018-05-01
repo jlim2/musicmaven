@@ -10,7 +10,7 @@ import { FirebaseProvider } from '../firebase/firebase';
 */
 @Injectable()
 export class SessionDataProvider {
-  roomCode: string;
+  public roomCode: string;
   hostBool: boolean;
   songVotes : Object;
 
@@ -62,13 +62,5 @@ export class SessionDataProvider {
    */
   getRoomCode() {
     return this.roomCode;
-  }
-
-  /**
-   * Setter for the current session's room code
-   * @param roomCodeInput
-   */
-  setRoomCode(roomCodeInput) {
-    this.roomCode = roomCodeInput;
   }
 }

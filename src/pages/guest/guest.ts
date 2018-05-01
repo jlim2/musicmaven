@@ -69,7 +69,7 @@ export class GuestPage {
     console.log("found", found);
 
     if (found >= 0) {     //if roomCode matches a room, push to room, otherwise show an alert
-      this.sDProvider.setRoomCode(cleanedRoomInput);
+      this.sDProvider.roomCode = cleanedRoomInput;
       this.sDProvider.setHost(false);
       //Set GuestSongPage as root https://stackoverflow.com/questions/37296999/ionic-2-disabling-back-button-for-a-specific-view
       this.navCtrl.insert(0, GuestSongListPage, {roomCode: roomCodeList[found]}).then(() => {
