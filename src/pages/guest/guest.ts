@@ -72,7 +72,7 @@ export class GuestPage {
       this.sDProvider.roomCode = cleanedRoomInput;
       this.sDProvider.setHost(false);
       //Set GuestSongPage as root https://stackoverflow.com/questions/37296999/ionic-2-disabling-back-button-for-a-specific-view
-      this.navCtrl.insert(0, GuestSongListPage, {roomCode: roomCodeList[found]}).then(() => {
+      this.navCtrl.setRoot(GuestSongListPage, {roomCode: roomCodeList[found]}).then(() => {
         this.navCtrl.popToRoot();
       });
     } else {

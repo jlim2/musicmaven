@@ -55,7 +55,7 @@ export class HostSongListPage {
   exitRoom() {
     console.log("exiting room " + this.roomCode);
     this.fBProvider.deleteRoom(this.roomCode);
-    this.navCtrl.insert(0, HostGuestPage).then(() => {
+    this.navCtrl.setRoot(HostGuestPage).then(() => {
       this.navCtrl.popToRoot();
 
     });

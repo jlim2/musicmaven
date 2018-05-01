@@ -29,7 +29,7 @@ export class GuestSongListPage {
     this.addSongButton = AddSongPage;
     this.roomCode = this.sDProvider.getRoomCode();
     this.room = this.fBProvider.getRoom(this.roomCode).valueChanges();
-    this.kickedoutConfirm(); // kick out the guest if the party has ended
+    this.kickedoutConfirm(); // kick out the guest with an alert if the party has ended
   }
 
   ionViewDidLoad() {
@@ -69,7 +69,7 @@ export class GuestSongListPage {
             }]
           }).present().then(() => {
             console.log("alert presented");
-            this.navCtrl.insert(0, HostGuestPage).then(() => {
+            this.navCtrl.setRoot(HostGuestPage).then(() => {
               this.navCtrl.popToRoot();
             });
           });
@@ -86,9 +86,6 @@ export class GuestSongListPage {
     this.navCtrl.setRoot(HostGuestPage).then(() => {
       this.navCtrl.popToRoot();
     });
-    // this.navCtrl.insert(0, HostGuestPage).then(() => {
-    //   this.navCtrl.popToRoot();
-    // });
   }
 
   /**

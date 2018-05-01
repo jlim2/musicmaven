@@ -90,7 +90,7 @@ export class HostGuestPage {
       buttons: ["OK"]
     });
     alert.present();
-    this.navCtrl.insert(0, HostSongListPage, {roomCode: this.roomCode}).then(() => {
+    this.navCtrl.setRoot(HostSongListPage, {roomCode: this.roomCode}).then(() => {
       this.navCtrl.popToRoot();
     });
   }
