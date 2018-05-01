@@ -26,8 +26,7 @@ export class SessionDataProvider {
    * @param isUpVote - 1 for an upvote, 0 for no vote, -1 for downvote
    */
   updateSongVotes(song, isUpVote){
-    let titleAndArtistString = song.title + song.artist;
-    this.songVotes[titleAndArtistString] = isUpVote;
+    this.songVotes[song.fbKey] = isUpVote;
   }
 
   /**
@@ -36,12 +35,10 @@ export class SessionDataProvider {
    * @returns {number} - current session user's votes
    */
   getSongVotes(song){
-    let titleAndArtistString = song.title + song.artist;
-    console.log("getSongVotes song.title+song.artist: ", titleAndArtistString)
-    if (!(titleAndArtistString in this.songVotes)){
+    if (!(song.fbKey in this.songVotes)){
       this.updateSongVotes(song, 0);
     }
-    return this.songVotes[titleAndArtistString];
+    return this.songVotes[song.fbKey];
   }
 
   /**
