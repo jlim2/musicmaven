@@ -41,7 +41,7 @@ export class AddSongPage {
     this.roomId = this.sDProvider.getRoomCode();
 
     this.room = this.fBProvider.getRoom(this.roomId).valueChanges();
-    
+
     this.kickedoutConfirm(); // kick out the guest if the party has ended
 
 
@@ -81,6 +81,12 @@ export class AddSongPage {
     }
   }
 
+  /**
+   * Checks that the input song and artist are not both null.
+   * @param {string} song
+   * @param {string} artist
+   * @returns {boolean}
+   */
   inputIsNotNull(song: string, artist: string) {
     var cleanSong = this.cleanPuncSpaceFromInputItem(song);
     var cleanArtist = this.cleanPuncSpaceFromInputItem(artist);
@@ -92,7 +98,14 @@ export class AddSongPage {
     }
   }
 
+  /**
+   * Checks that the input song and artist are not too long.
+   * @param {string} song
+   * @param {string} artist
+   * @returns {boolean}
+   */
   inputIsNotTooLong(song: string, artist: string) {
+    //At the moment too long has been determined to be >50 characters
     if(song.length < 50 && artist.length < 50) {
       return true;
     } else {
@@ -100,6 +113,11 @@ export class AddSongPage {
     }
   }
 
+  /**
+   * Cleans the input  string of spaces and punctuation.
+   * @param {string} input - the input string
+   * @returns {string}
+   */
   cleanPuncSpaceFromInputItem(input: string) {
     if(input != null && !(input === "")) {
       var noSpaceInput = input.replace(/\s/g, '');

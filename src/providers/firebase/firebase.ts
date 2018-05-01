@@ -56,10 +56,13 @@ export class FirebaseProvider {
    * @returns {AngularFireList<Song[]>}
    */
   getSongList(roomCode) {
-    // return this.afDB.list<Song []>('/rooms/'+roomCode+'/songs', ref => {
-    //   return ref.orderByChild('upVotes')
-    // })
     return this.afDB.list<Song []>('/rooms/'+roomCode+'/songs');
+  }
+
+  getSortedSongList(roomCode) {
+    return this.afDB.list<Song []>('/rooms/'+roomCode+'/songs', ref => {
+      return ref.orderByChild('upVotes')
+    })
   }
 
   /**
@@ -77,8 +80,6 @@ export class FirebaseProvider {
    */
   pushSong(song, roomId){
     let promise = this.afDB.list("rooms/"+roomId+"/songs").push(song);
-    // this.afDB.database.ref("rooms/"+roomId+"/songs"+song.fBKey).orderByChild('upVotes');
-    // console.log("trying to order by child");
     song.fbKey = promise.key;
     this.afDB.database.ref('/').child('rooms').child(roomId).child('songs').child(promise.key).update({fbKey: promise.key});
     console.log("Attempted to push: " + song.title);
@@ -103,8 +104,6 @@ export class FirebaseProvider {
         return currentDownVotes + 1;
       });
     }
-    // this.afDB.database.ref("rooms/"+roomId+"/songs"+song.fBKey).orderByChild('upVotes');
-    // console.log("trying to order by child");
   }
 
   /**
@@ -115,11 +114,7 @@ export class FirebaseProvider {
    */
   switchVote(song, roomId, switchToUpVote){
     const songRef = this.afDB.database.ref('/').child('rooms').child(roomId).child('songs').child(song.fbKey);
-    // songRef.update({downVotes:song.downVotes});
-    // songRef.update({upVotes:song.upVotes});
     if(switchToUpVote){
-      // songRef.update({downVotes:--song.downVotes});
-      // songRef.update({upVotes:++song.upVotes});
       songRef.transaction(function(currentSong){
         currentSong.downVotes-=1;
         currentSong.upVotes+=1;
@@ -127,8 +122,6 @@ export class FirebaseProvider {
       });
     }
     else{
-      // songRef.update({upVotes:--song.upVotes});
-      // songRef.update({downVotes:++song.downVotes});
       songRef.transaction(function(currentSong){
         currentSong.downVotes+=1;
         currentSong.upVotes-=1;
