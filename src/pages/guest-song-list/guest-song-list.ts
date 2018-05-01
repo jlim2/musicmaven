@@ -20,7 +20,7 @@ import { HostGuestPage } from "../host-guest/host-guest";
 
 export class GuestSongListPage {
   addSongButton: any;
-  public roomId: string;
+  public roomCode: string;
   title: String;
   songList: any;
   room: any;
@@ -30,24 +30,24 @@ export class GuestSongListPage {
               public fBProvider: FirebaseProvider,
               private sDProvider: SessionDataProvider) {
     this.addSongButton = AddSongPage;
-    this.roomId = this.sDProvider.getRoomCode();
-    this.room = this.fBProvider.getRoom(this.roomId).valueChanges();
+    this.roomCode = this.sDProvider.getRoomCode();
+    this.room = this.fBProvider.getRoom(this.roomCode).valueChanges();
     this.kickedoutConfirm(); // kick out the guest if the party has ended
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad GuestSongListPage');
-    console.log('Current room: '+this.roomId);
+    console.log('Current room: '+this.roomCode);
     console.log('Host?: '+this.sDProvider.isHost());
-    this.title = "Guest: "+this.roomId;
-    this.songList = this.fBProvider.getSongList(this.roomId).valueChanges();
+    this.title = "Guest: "+this.roomCode;
+    this.songList = this.fBProvider.getSongList(this.roomCode).valueChanges();
   }
 
   /**
    * Takes user to the add song page of the current room.
    */
   goToAddSongPage() {
-    this.navCtrl.push(AddSongPage, {roomId: this.roomId});
+    this.navCtrl.push(AddSongPage, {roomCode: this.roomCode});
   }
 
   /**
@@ -85,7 +85,7 @@ export class GuestSongListPage {
    * Takes user to the main page.
    */
   exitRoom() {
-    console.log("exiting room " + this.roomId);
+    console.log("exiting room " + this.roomCode);
     this.navCtrl.insert(0, HostGuestPage).then(() => {
       this.navCtrl.popToRoot();
     });
@@ -135,18 +135,18 @@ export class GuestSongListPage {
       else {
         this.sDProvider.updateSongVotes(song, -1);
       }
-      this.fBProvider.updateVote(song, this.roomId, isUpVote);
+      this.fBProvider.updateVote(song, this.roomCode, isUpVote);
     }
     else if (votes == 1) {
       if(!isUpVote){
         this.sDProvider.updateSongVotes(song, -1);
-        this.fBProvider.switchVote(song, this.roomId, isUpVote);
+        this.fBProvider.switchVote(song, this.roomCode, isUpVote);
       }
     }
     else {
       if(isUpVote){
         this.sDProvider.updateSongVotes(song, 1);
-        this.fBProvider.switchVote(song, this.roomId, isUpVote);
+        this.fBProvider.switchVote(song, this.roomCode, isUpVote);
       }
     }
   }

@@ -21,7 +21,7 @@ export class FirebaseProvider {
    * @param roomCode  a string of numbers and alphabets unique to each room
    */
   genRoom(roomCode) {
-    this.afDB.database.ref('/').child('rooms').child(roomCode).set({id: roomCode});
+    this.afDB.database.ref('/').child('rooms').child(roomCode).set({roomCode: roomCode});
   }
 
   /**
@@ -111,7 +111,7 @@ export class FirebaseProvider {
    */
   deleteRoom(roomCode) {
     const roomRef = this.afDB.database.ref('/').child('rooms').child(roomCode);
-    console.log("roomId: "+ roomCode + " roomRef on deleteRoom: "+ roomRef);
+    console.log("roomCode: "+ roomCode + " roomRef on deleteRoom: "+ roomRef);
     roomRef.remove();
   }
 
@@ -136,7 +136,7 @@ export class FirebaseProvider {
     this.afDB.list("/rooms").valueChanges()
       .subscribe(list =>{
         list.forEach(room => {
-          codeList[i] = room['id'];
+          codeList[i] = room['roomCode'];
           i++;
         });
       });

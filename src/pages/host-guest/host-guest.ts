@@ -27,7 +27,7 @@ export class HostGuestPage {
   public roomCode: string;
   roomList: AngularFireList<any>;
   rooms: Observable<any[]>;
-  idList: Array<String>;
+  roomCodeList: Array<String>;
   found: number = -1;
   ROOMCODE_LENGTH: number = 5;
 
@@ -42,7 +42,7 @@ export class HostGuestPage {
       this.HowtoButton = HowtoPage;
       this.roomList = this.afDB.list('/rooms');
       this.rooms = this.roomList.valueChanges();
-      this.idList = new Array<String>(2);
+      this.roomCodeList = new Array<String>(2);
   }
 
   ionViewDidLoad() {
@@ -90,7 +90,7 @@ export class HostGuestPage {
       buttons: ["OK"]
     });
     alert.present();
-    this.navCtrl.insert(0, HostSongListPage, {roomId: this.roomCode}).then(() => {
+    this.navCtrl.insert(0, HostSongListPage, {roomCode: this.roomCode}).then(() => {
       this.navCtrl.popToRoot();
     });
   }

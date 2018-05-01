@@ -23,7 +23,7 @@ export class GuestPage {
   roomCode: string = "";
   roomList: AngularFireList<any>;
   room: Observable<any[]>;
-  idList: Array<String>;
+  roomCodeList: Array<String>;
 
   constructor(
     public navCtrl: NavController,
@@ -31,49 +31,48 @@ export class GuestPage {
     public alertCtrl: AlertController,
     private sDProvider: SessionDataProvider,
     public fBProvider: FirebaseProvider) {
-
     this.EnterRoomButton = GuestSongListPage;
     this.roomList = this.afDB.list('/rooms');
     this.room = this.roomList.valueChanges();
-    this.idList = new Array<String>();
+    this.roomCodeList = new Array<String>();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad GuestPage');
-    this.idList = this.fBProvider.getRoomCodeList();
+    this.roomCodeList = this.fBProvider.getRoomCodeList();
   }
 
   /**
-   * Creates a list of available room IDs
+   * Creates a list of available room codes
    */
   makeIdList() {
     let i = 0;
     this.afDB.list("/rooms").valueChanges()
-      .subscribe(list =>{
-        list.forEach(item => {
-          this.idList[i] = item['id'];
+      .subscribe(roomList =>{
+        roomList.forEach(room => {
+          this.roomCodeList[i] = room['roomCode'];
           i++;
         });
       });
-    console.log(this.idList);
+    console.log(this.roomCodeList);
   }
 
   /**
    * Checks if the user input of room code is one of the room codes in the Firebase.
    * @param roomInput - User input room code
-   * @param idList - list of room codes
+   * @param roomCodeList - list of room codes
    */
-  isCorrectRoomInput(roomInput: string, idList: String[]) {
-    let lowerRoomInput = roomInput.toLowerCase(); // Make the input case-insensitive
-    console.log("roomInput", lowerRoomInput);
-    let found = idList.indexOf(lowerRoomInput);
+  isCorrectRoomInput(roomInput: string, roomCodeList: String[]) {
+    let cleanedRoomInput = roomInput.toLowerCase(); // Make the input case-insensitive
+    console.log("roomInput", cleanedRoomInput);
+    let found = roomCodeList.indexOf(cleanedRoomInput);
     console.log("found", found);
 
     if (found >= 0) {     //if roomCode matches a room, push to room, otherwise show an alert
-      this.sDProvider.setRoomCode(lowerRoomInput);
+      this.sDProvider.setRoomCode(cleanedRoomInput);
       this.sDProvider.setHost(false);
       //Set GuestSongPage as root https://stackoverflow.com/questions/37296999/ionic-2-disabling-back-button-for-a-specific-view
-      this.navCtrl.insert(0, GuestSongListPage, {roomId: idList[found]}).then(() => {
+      this.navCtrl.insert(0, GuestSongListPage, {roomCode: roomCodeList[found]}).then(() => {
         this.navCtrl.popToRoot();
       });
     } else {
