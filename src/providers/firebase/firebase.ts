@@ -24,22 +24,22 @@ export class FirebaseProvider {
     this.afDB.database.ref('/').child('rooms').child(roomId).set({id: roomId});
   }
 
-  /**
-   * Getter for the list of rooms from the Firebase
-   * @returns {AngularFireList<T>}
-   */
-  getRoomDir() {
-    return this.afDB.list('/rooms/');
-  }
+  // /**
+  //  * Getter for the list of rooms from the Firebase
+  //  * @returns {AngularFireList<T>}
+  //  */
+  // getRoomDir() {
+  //   return this.afDB.list('/rooms/');
+  // }
 
-  /**
-   * Getter for the Firebase reference of the given room
-   * @param roomCode
-   * @returns {firebase.database.Reference}
-   */
-  getRoomRef(roomCode) {
-    return this.afDB.database.ref('/rooms/').child(roomCode);
-  }
+  // /**
+  //  * Getter for the Firebase reference of the given room
+  //  * @param roomCode
+  //  * @returns {firebase.database.Reference}
+  //  */
+  // getRoomRef(roomCode) {
+  //   return this.afDB.database.ref('/rooms/').child(roomCode);
+  // }
 
   /**
    * Getter for the Room object of the given room from Firebase
@@ -65,13 +65,13 @@ export class FirebaseProvider {
     })
   }
 
-  /**
-   * Generates room with the roomCode on Firebase
-   * @param roomCode
-   */
-  pushRoom(roomCode) {
-    this.afDB.list('/rooms/').push(roomCode);
-  }
+  // /**
+  //  * Generates room with the roomCode on Firebase
+  //  * @param roomCode
+  //  */
+  // pushRoom(roomCode) {
+  //   this.afDB.list('/rooms/').push(roomCode);
+  // }
 
   /**
    * Push the song that the user provided
