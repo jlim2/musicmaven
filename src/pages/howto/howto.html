@@ -11,7 +11,7 @@
       <ion-thumbnail float-right>
         <img src="../../assets/imgs/logoicon.png" height="30px" padding-right="1px"/>
       </ion-thumbnail>
-      <ion-title class="titleicon">About</ion-title>
+      <ion-title class="titleicon">Info</ion-title>
     </div>
   </ion-navbar>
 
@@ -27,20 +27,29 @@
           <ion-row text-center>
             <ion-title>Welcome to Music Maven!</ion-title>
           </ion-row>
-          <ion-row justify-content-center text-center>
-            <a href="#start">Start</a>
+          <ion-row>
+            Click a section below or swipe through to get started!
           </ion-row>
-          <ion-row justify-content-center text-center>
-            <a href="#room_code">Room Code</a>
+
+          <ion-row class="blank"></ion-row>
+
+          <ion-row justify-content-center>
+            <button ion-button (click)="goToSlide(1)" class="howtobutton">About</button>
           </ion-row>
-          <ion-row justify-content-center text-center>
-            <a href="#host">Host</a>
+          <ion-row justify-content-center>
+            <button ion-button (click)="goToSlide(2)" class="howtobutton">Getting Started</button>
           </ion-row>
-          <ion-row justify-content-center text-center>
-            <a href="#guest">Guest</a>
+          <ion-row justify-content-center>
+            <button ion-button (click)="goToSlide(3)" class="howtobutton">Enter a Room</button>
           </ion-row>
-          <ion-row justify-content-center text-center>
-            <a href="#add_song">Add Song</a>
+          <ion-row justify-content-center>
+            <button ion-button (click)="goToSlide(4)" class="howtobutton">Hosting</button>
+          </ion-row>
+          <ion-row justify-content-center>
+            <button ion-button (click)="goToSlide(5)" class="howtobutton">Being a Guest</button>
+          </ion-row>
+          <ion-row justify-content-center>
+            <button ion-button (click)="goToSlide(6)" class="howtobutton">Add a Song</button>
           </ion-row>
         </ion-col>
       </ion-grid>
@@ -75,9 +84,9 @@
   <ion-slide>
     <ion-grid>
         <ion-col>
-          <p id = "start">
+          <p>
             <ion-row text-center>
-              <ion-title>START</ion-title>
+              <ion-title>Getting Started</ion-title>
             </ion-row>
           </p>
           <ion-row text-justify>
@@ -93,14 +102,21 @@
           <ion-row justify-content-center>
             <img margin-bottom="20px" class="howto" src="../../assets/imgs/howToScreenShots/hostGuest.png">
           </ion-row>
-          <p id = "room_code">
+        </ion-col>
+    </ion-grid>
+  </ion-slide>
+
+          <ion-slide>
+            <ion-grid>
+              <ion-col>
+          <p>
             <ion-row text-center>
-              <ion-title>ROOM CODE</ion-title>
+              <ion-title>Entering a Room</ion-title>
             </ion-row>
           </p>
           <ion-row text-justify>
             <p>
-              If you are the host, when you click that button, your room code
+              If you are the host, when you click host, your room code
               will appear as shown. It will be on the top of the pages for you
               to see at any time and tell your guests.
             </p>
@@ -109,7 +125,7 @@
             <img class="howto" src="../../assets/imgs/howToScreenShots/hostRoomCreation.png">
           </ion-row>
           <ion-row text-justify>
-            <p>
+            <p> 
               If you are a guest, after you click guest, you will see a place
               for you to enter the room code. Get the room code from your host
               and enter it in the box!
@@ -125,9 +141,9 @@
   <ion-slide>
     <ion-grid>
         <ion-col>
-          <p id = "host">
+          <p>
             <ion-row text-center>
-              <ion-title>HOST</ion-title>
+              <ion-title>Hosting</ion-title>
             </ion-row>
           </p>
           <ion-row>
@@ -177,9 +193,9 @@
   <ion-slide>
     <ion-grid>
         <ion-col>
-          <p id = "guest">
+          <p>
             <ion-row text-center>
-              <ion-title>GUEST</ion-title>
+              <ion-title>Being a Guest</ion-title>
             </ion-row>
           </p>
           <ion-row text-justify>
@@ -235,9 +251,9 @@
   <ion-slide>
     <ion-grid>
         <ion-col>
-          <p id = "add_song">
+          <p>
             <ion-row text-center>
-              <ion-title>ADD SONG</ion-title>
+              <ion-title>Add a Song</ion-title>
             </ion-row>
           </p>
           <ion-row text-justify>

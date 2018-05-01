@@ -14,4 +14,17 @@ page-howto {
   .howtoslide {
     background-color: map_get($colors, background);
   }
+
+  .howtobutton {
+    width: 50vw;
+  }
+
+  .blank {
+    height: 5vh !important;
+  }
+
+  .swiper-slide {
+    overflow-y: scroll;
+    display: block;
+  }
 }
