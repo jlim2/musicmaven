@@ -29,7 +29,7 @@ export class HostSongListPage {
               public fBProvider: FirebaseProvider,
               private sDProvider: SessionDataProvider) {
     this.addSongButton = AddSongPage;
-    this.roomCode = this.sDProvider.getRoomCode(); //Gets the roomCode from the Session Data Provider
+    this.roomCode = this.sDProvider.roomCode; //Gets the roomCode from the Session Data Provider
   }
 
   ionViewDidLoad() {

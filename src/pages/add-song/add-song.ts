@@ -24,7 +24,7 @@ export class AddSongPage {
   GuestSongListButton : any;
   HostSongListButton : any;
 
-  roomId : string;
+  roomCode : string;
   title: string;
 
   room: any;
@@ -38,9 +38,9 @@ export class AddSongPage {
     this.GuestSongListButton = GuestSongListPage;
     this.HostSongListButton = HostSongListPage;
 
-    this.roomId = this.sDProvider.getRoomCode();
+    this.roomCode = this.sDProvider.roomCode;
 
-    this.room = this.fBProvider.getRoom(this.roomId).valueChanges();
+    this.room = this.fBProvider.getRoom(this.roomCode).valueChanges();
 
     this.kickedoutConfirm(); // kick out the guest if the party has ended
 
@@ -49,7 +49,7 @@ export class AddSongPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddSongPage');
-    console.log('Add Song Room: ' + this.roomId); // DEBUG
+    console.log('Add Song Room: ' + this.roomCode); // DEBUG
   }
 
   /**
@@ -175,9 +175,9 @@ export class AddSongPage {
    */
   addSongToFB(songInput, artistInput) {
     if(this.isValidInput(songInput, artistInput)) {
-      console.log("songName: " + songInput + ", and roomCode: " +this.roomId); // DEBUG
+      console.log("songName: " + songInput + ", and roomCode: " +this.roomCode); // DEBUG
       let song: Song = {title: this.replaceEmptySong(songInput), artist: this.replaceEmptyArtist(artistInput), upVotes: 0, downVotes: 0}; // converts the song to a Song object
-      this.fBProvider.pushSong(song, this.roomId); // pushes the song to the Firebase
+      this.fBProvider.pushSong(song, this.roomCode); // pushes the song to the Firebase
       console.log("fbkey "+ song.fbKey);
     } else {
       this.badSongAlert();
@@ -205,7 +205,7 @@ export class AddSongPage {
            }]
           }).present().then(() => {
            console.log("alert presented");
-           this.navCtrl.insert(0, HostGuestPage).then(() => {
+           this.navCtrl.setRoot(HostGuestPage).then(() => {
               this.navCtrl.popToRoot();
             });
           });
@@ -219,13 +219,13 @@ export class AddSongPage {
    * If host, go to host song list page, otherwise GuestSongListPage
    */
   goToSongListPage(){
-    console.log("Trying to go to Song List page with "+this.roomId);
+    console.log("Trying to go to Song List page with "+this.roomCode);
     if (this.sDProvider.isHost() == true) {
-      this.navCtrl.insert(0, HostSongListPage, {roomId: this.roomId}).then(() => {
+      this.navCtrl.setRoot(HostSongListPage, {roomId: this.roomCode}).then(() => {
         this.navCtrl.popToRoot();
       });
     } else {
-      this.navCtrl.insert(0, GuestSongListPage, {roomId: this.roomId}).then(() => {
+      this.navCtrl.setRoot(GuestSongListPage, {roomId: this.roomCode}).then(() => {
         this.navCtrl.popToRoot();
       });
     }

@@ -55,12 +55,4 @@ export class SessionDataProvider {
   setHost(hostBoolInput) {
     this.hostBool = hostBoolInput;
   }
-
-  /**
-   * Getter for the current session's room code
-   * @returns {string}
-   */
-  getRoomCode() {
-    return this.roomCode;
-  }
 }

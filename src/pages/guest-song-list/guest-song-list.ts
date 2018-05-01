@@ -27,7 +27,7 @@ export class GuestSongListPage {
               public fBProvider: FirebaseProvider,
               private sDProvider: SessionDataProvider) {
     this.addSongButton = AddSongPage;
-    this.roomCode = this.sDProvider.getRoomCode();
+    this.roomCode = this.sDProvider.roomCode;
     this.room = this.fBProvider.getRoom(this.roomCode).valueChanges();
     this.kickedoutConfirm(); // kick out the guest with an alert if the party has ended
   }
