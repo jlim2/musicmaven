@@ -17,7 +17,7 @@ export class FirebaseProvider {
   }
 
   /**
-   * Generates a room with the generated roomId on the Firebase.
+   * Generates a room with the generated roomCode on the Firebase.
    * @param roomCode  a string of numbers and alphabets unique to each room
    */
   genRoom(roomCode) {

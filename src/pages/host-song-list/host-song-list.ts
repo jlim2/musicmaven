@@ -20,7 +20,7 @@ import { HostGuestPage } from "../host-guest/host-guest";
 })
 export class HostSongListPage {
   addSongButton: any;
-  public roomId: string;
+  public roomCode: string;
   songList: any;
   roomTitle: String;
 
@@ -29,15 +29,15 @@ export class HostSongListPage {
               public fBProvider: FirebaseProvider,
               private sDProvider: SessionDataProvider) {
     this.addSongButton = AddSongPage;
-    this.roomId = this.sDProvider.getRoomCode(); //Gets the roomCode from the Session Data Provider
+    this.roomCode = this.sDProvider.getRoomCode(); //Gets the roomCode from the Session Data Provider
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HostSongListPage');
-    console.log('Current room: ' +this.roomId);
+    console.log('Current room: ' +this.roomCode);
     console.log('Host?: '+this.sDProvider.isHost());
-    this.roomTitle = "Host: "+ this.roomId;
-    this.songList = this.fBProvider.getSortedSongList(this.roomId).valueChanges();
+    this.roomTitle = "Host: "+ this.roomCode;
+    this.songList = this.fBProvider.getSortedSongList(this.roomCode).valueChanges();
 
   }
 
@@ -45,16 +45,16 @@ export class HostSongListPage {
    * Takes an user to the AddSongPage of the specified room.
    */
   goToAddSongPage() {
-    console.log("roomId going to add song page:" + this.roomId);
-    this.navCtrl.push(AddSongPage, {roomId: this.roomId});
+    console.log("roomCode going to add song page:" + this.roomCode);
+    this.navCtrl.push(AddSongPage, {roomId: this.roomCode});
   }
 
   /**
    * Takes an user to the main page (host-guest) and deletes the room.
    */
   exitRoom() {
-    console.log("exiting room " + this.roomId);
-    this.fBProvider.deleteRoom(this.roomId);
+    console.log("exiting room " + this.roomCode);
+    this.fBProvider.deleteRoom(this.roomCode);
     this.navCtrl.insert(0, HostGuestPage).then(() => {
       this.navCtrl.popToRoot();
 
@@ -104,7 +104,7 @@ export class HostSongListPage {
    */
   async deleteSong(song) {
     await this.delay(300);
-    this.fBProvider.deleteSong(song, this.roomId);
+    this.fBProvider.deleteSong(song, this.roomCode);
   }
 
   /**
