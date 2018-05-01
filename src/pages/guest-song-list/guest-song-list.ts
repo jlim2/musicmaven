@@ -8,9 +8,6 @@ import { HostGuestPage } from "../host-guest/host-guest";
 
 /**
  * Displays the room-specific song list for Guest. Allows for voting on songs.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
  */
 
 @IonicPage()
@@ -21,7 +18,7 @@ import { HostGuestPage } from "../host-guest/host-guest";
 export class GuestSongListPage {
   addSongButton: any;
   public roomCode: string;
-  title: String;
+  roomTitle: String;
   songList: any;
   room: any;
 
@@ -39,7 +36,7 @@ export class GuestSongListPage {
     console.log('ionViewDidLoad GuestSongListPage');
     console.log('Current room: '+this.roomCode);
     console.log('Host?: '+this.sDProvider.isHost());
-    this.title = "Guest: "+this.roomCode;
+    this.roomTitle = "Guest: "+this.roomCode;
     this.songList = this.fBProvider.getSongList(this.roomCode).valueChanges();
   }
 
@@ -86,9 +83,12 @@ export class GuestSongListPage {
    */
   exitRoom() {
     console.log("exiting room " + this.roomCode);
-    this.navCtrl.insert(0, HostGuestPage).then(() => {
+    this.navCtrl.setRoot(HostGuestPage).then(() => {
       this.navCtrl.popToRoot();
     });
+    // this.navCtrl.insert(0, HostGuestPage).then(() => {
+    //   this.navCtrl.popToRoot();
+    // });
   }
 
   /**

@@ -22,7 +22,7 @@ export class HostSongListPage {
   addSongButton: any;
   public roomId: string;
   songList: any;
-  title: String;
+  roomTitle: String;
 
   constructor(public navCtrl: NavController,
               public alertCtrl: AlertController,
@@ -36,7 +36,7 @@ export class HostSongListPage {
     console.log('ionViewDidLoad HostSongListPage');
     console.log('Current room: ' +this.roomId);
     console.log('Host?: '+this.sDProvider.isHost());
-    this.title = "Host: "+ this.roomId;
+    this.roomTitle = "Host: "+ this.roomId;
     this.songList = this.fBProvider.getSortedSongList(this.roomId).valueChanges();
 
   }
