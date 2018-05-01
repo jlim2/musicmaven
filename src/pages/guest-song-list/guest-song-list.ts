@@ -118,13 +118,13 @@ export class GuestSongListPage {
     alert.present();
   }
 
-  /**
-   * Deletes a song from the list (and the Firebase)
-   * @param song - Song object to be deleted
-   */
-  deleteSong(song) {
-    this.fBProvider.deleteSong(song, this.roomId);
-  }
+  // /**
+  //  * Deletes a song from the list (and the Firebase)
+  //  * @param song - Song object to be deleted
+  //  */
+  // deleteSong(song) {
+  //   this.fBProvider.deleteSong(song, this.roomId);
+  // }
 
   /**
    * Votes on a song.
@@ -135,7 +135,7 @@ export class GuestSongListPage {
     let votes = this.sDProvider.getSongVotes(song);
     //checks if there are any previous votes for this user (stored in session data)
     //if there are previous votes, checks if the current vote is the opposite type,
-    //and if it is, switches the vote in session data and firebase 
+    //and if it is, switches the vote in session data and firebase
     if (votes == 0) {
       if(isUpVote){
         this.sDProvider.updateSongVotes(song, 1);
