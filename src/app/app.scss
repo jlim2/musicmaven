@@ -56,9 +56,16 @@ ion-app.wp [padding] .scroll-content {
   background-color: map-get($colors, button);
 }
 
-.button:hover {
-  background-color: map-get($colors, button) !important;
+
+//.swiper-pagination-bullet {
+//  opacity: 0.5;
+//}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: map-get($colors, button);
 }
+
 
 .background {
   background-color: map-get($colors, background);
@@ -121,4 +128,8 @@ ion-app.wp [padding] .scroll-content {
 
 .smaller {
   font-size: smaller;
+}
+
+.no-scroll .scroll-content{
+  overflow: hidden;
 }

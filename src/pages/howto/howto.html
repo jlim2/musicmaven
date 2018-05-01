@@ -17,218 +17,259 @@
 
 </ion-header>
 
+<ion-content class="background">
 
-<ion-content padding class="background">
-  <ion-grid>
-    <ion-col>
-      <ion-row text-center>
-        <ion-title>Welcome to Music Maven!</ion-title>
-      </ion-row>
-      <ion-row justify-content-center text-center>
-        <a href="#start">Start</a>
-      </ion-row>
-      <ion-row justify-content-center text-center>
-        <a href="#room_code">Room Code</a>
-      </ion-row>
-      <ion-row justify-content-center text-center>
-        <a href="#host">Host</a>
-      </ion-row>
-      <ion-row justify-content-center text-center>
-        <a href="#guest">Guest</a>
-      </ion-row>
-      <ion-row justify-content-center text-center>
-        <a href="#add_song">Add Song</a>
-      </ion-row>
-      <ion-row text-justify>
-        <p>
-          Hello! Welcome to Music Maven! This app is intended to help
-          you hear the songs you want at a party or event. The host of
-          the party will start a room, and guests at the party get to
-          vote on which songs they like or don’t, and suggest songs that
-          they want to hear! The host can then use their preferred music
-          program (e.g. Spotify) to update the playlist of the party in
-          real time. Giving the power back to the guests!
-        </p>
-      </ion-row>
-      <ion-row justify-content-center text-center>
-        <p>
-          <span class="bigger">
-            SWIPE TO VOTE AS A GUEST!<br>
-            SWIPE TO DELETE AS A HOST!
-          </span>
-        </p>
-      </ion-row>
-      <p id = "start">
-      <ion-row text-center>
-        <ion-title>START</ion-title>
-      </ion-row>
-      </p>
-      <ion-row text-justify>
-        <p>
-          When you opened the app, you saw this screen. Here, you should
-          choose whether you are the host of the party or a guest. If you
-          are the host, you will be the one looking at song requests and
-          votes and implementing them in your playlist! If you are the
-          guest, you are at a party where someone has already started
-          hosting, and has a room code for you to sign in with and start voting.
-        </p>
-      </ion-row>
-      <ion-row justify-content-center>
-        <img margin-bottom="20px" class="howto" src="../../assets/imgs/howToScreenShots/hostGuest.png">
-      </ion-row>
-      <p id = "room_code">
-      <ion-row text-center>
-        <ion-title>ROOM CODE</ion-title>
-      </ion-row>
-      </p>
-      <ion-row text-justify>
-        <p>
-          If you are the host, when you click that button, your room code
-          will appear as shown. It will be on the top of the pages for you
-          to see at any time and tell your guests.
-        </p>
-      </ion-row>
-      <ion-row justify-content-center>
-        <img class="howto" src="../../assets/imgs/howToScreenShots/hostRoomCreation.png">
-      </ion-row>
-      <ion-row text-justify>
-        <p>
-          If you are a guest, after you click guest, you will see a place
-          for you to enter the room code. Get the room code from your host
-          and enter it in the box!
-        </p>
-      </ion-row>
-      <ion-row justify-content-center>
-        <img margin-bottom="20px" class="howto" src="../../assets/imgs/howToScreenShots/guestEnterRoom.png">
-      </ion-row>
-      <p id = "host">
-      <ion-row text-center>
-        <ion-title>HOST</ion-title>
-      </ion-row>
-      </p>
-      <ion-row>
-        <p>
-          If you’re the host, congratulations! We hope your party is lit!
-        </p>
-      </ion-row>
-      <ion-row text-justify>
-        <p>
-          As the host, you will see a blank song list page. You can add songs
-          that you plan to play, or songs that you want to get guest input on.
-          Guests can also add song suggestions, and you will see them show up here.
-        </p>
-      </ion-row>
-      <ion-row justify-content-center>
-        <img class="howto" src="../../assets/imgs/howToScreenShots/hostSongList.png">
-      </ion-row>
-      <ion-row text-justify>
-        <p>
-          As the host, you won’t be voting, but you can add and delete songs from the list.
-          Swipe either direction to delete a song. If you see a
-          duplicate or a song that has many down votes, you might decide you won’t
-          play this one and delete it. Please make sure to delete duplicate songs that have
-          the identical song title and artist name (or it will cause an error).
-          With great power comes great responsibility.
-          If you take your guests' input into consideration, you should have a
-          successful playlist!
-        </p>
-      </ion-row>
-      <ion-row text-justify>
-        <p>
-          As the host, you also have the ability to end the party. If you press the
-          X in the top right corner, this will give you this pop up option to end the
-          party, which will kick all the guests out, and delete your saved song list.
-          Make sure to tell your guests when you are ending the party so that they
-          cannot add more songs.
-          Make sure that you are certain when you want to end the party!
-        </p>
-      </ion-row>
-      <ion-row justify-content-center>
-        <img margin-bottom="20px" class="howto" src="../../assets/imgs/howToScreenShots/hostEndParty.png">
-      </ion-row>
-      <p id = "guest">
-      <ion-row text-center>
-        <ion-title>GUEST</ion-title>
-      </ion-row>
-      </p>
-      <ion-row text-justify>
-        <p>
-          As a guest at this party, after signing in, you will see a song list page.
-          This page may have songs in it already, or it may not. The host can add songs
-          they want to play, and the guests can add song suggestions!
-        </p>
-      </ion-row>
-      <ion-row justify-content-center>
-        <img class="howto" src="../../assets/imgs/howToScreenShots/guestSongList.png">
-      </ion-row>
-      <ion-row text-justify>
-        <p>
-          As a guest, you also have the ability to vote on the songs on the list. You will
-          see your votes, along with those of other guests, show up here. To vote, swipe
-          toward the vote display that you want to do.
-        </p>
-      </ion-row>
-      <ion-row text-center justify-content-center>
-        <p>
+<ion-slides pager class="scroll-content howtoslide">
+
+  <ion-slide>
+      <ion-grid>
+        <ion-col>
+          <ion-row text-center>
+            <ion-title>Welcome to Music Maven!</ion-title>
+          </ion-row>
+          <ion-row justify-content-center text-center>
+            <a href="#start">Start</a>
+          </ion-row>
+          <ion-row justify-content-center text-center>
+            <a href="#room_code">Room Code</a>
+          </ion-row>
+          <ion-row justify-content-center text-center>
+            <a href="#host">Host</a>
+          </ion-row>
+          <ion-row justify-content-center text-center>
+            <a href="#guest">Guest</a>
+          </ion-row>
+          <ion-row justify-content-center text-center>
+            <a href="#add_song">Add Song</a>
+          </ion-row>
+        </ion-col>
+      </ion-grid>
+  </ion-slide>
+
+  <ion-slide>
+    <ion-grid>
+      <ion-col>
+          <ion-row text-justify>
+            <p>
+              Hello! Welcome to Music Maven! This app is intended to help
+              you hear the songs you want at a party or event. The host of
+              the party will start a room, and guests at the party get to
+              vote on which songs they like or don’t, and suggest songs that
+              they want to hear! The host can then use their preferred music
+              program (e.g. Spotify) to update the playlist of the party in
+              real time. Giving the power back to the guests!
+            </p>
+          </ion-row>
+          <ion-row justify-content-center text-center>
+            <p>
+              <span class="bigger">
+                SWIPE TO VOTE AS A GUEST!<br>
+                SWIPE TO DELETE AS A HOST!
+             </span>
+            </p>
+          </ion-row>
+        </ion-col>
+      </ion-grid>
+  </ion-slide>
+
+  <ion-slide>
+    <ion-grid>
+        <ion-col>
+          <p id = "start">
+            <ion-row text-center>
+              <ion-title>START</ion-title>
+            </ion-row>
+          </p>
+          <ion-row text-justify>
+            <p>
+              When you opened the app, you saw this screen. Here, you should
+              choose whether you are the host of the party or a guest. If you
+              are the host, you will be the one looking at song requests and
+              votes and implementing them in your playlist! If you are the
+              guest, you are at a party where someone has already started
+              hosting, and has a room code for you to sign in with and start voting.
+            </p>
+          </ion-row>
+          <ion-row justify-content-center>
+            <img margin-bottom="20px" class="howto" src="../../assets/imgs/howToScreenShots/hostGuest.png">
+          </ion-row>
+          <p id = "room_code">
+            <ion-row text-center>
+              <ion-title>ROOM CODE</ion-title>
+            </ion-row>
+          </p>
+          <ion-row text-justify>
+            <p>
+              If you are the host, when you click that button, your room code
+              will appear as shown. It will be on the top of the pages for you
+              to see at any time and tell your guests.
+            </p>
+          </ion-row>
+          <ion-row justify-content-center>
+            <img class="howto" src="../../assets/imgs/howToScreenShots/hostRoomCreation.png">
+          </ion-row>
+          <ion-row text-justify>
+            <p>
+              If you are a guest, after you click guest, you will see a place
+              for you to enter the room code. Get the room code from your host
+              and enter it in the box!
+            </p>
+          </ion-row>
+          <ion-row justify-content-center>
+            <img margin-bottom="20px" class="howto" src="../../assets/imgs/howToScreenShots/guestEnterRoom.png">
+          </ion-row>
+        </ion-col>
+      </ion-grid>
+  </ion-slide>
+
+  <ion-slide>
+    <ion-grid>
+        <ion-col>
+          <p id = "host">
+            <ion-row text-center>
+              <ion-title>HOST</ion-title>
+            </ion-row>
+          </p>
+          <ion-row>
+            <p>
+              If you’re the host, congratulations! We hope your party is lit!
+            </p>
+          </ion-row>
+          <ion-row text-justify>
+            <p>
+              As the host, you will see a blank song list page. You can add songs
+              that you plan to play, or songs that you want to get guest input on.
+              Guests can also add song suggestions, and you will see them show up here.
+            </p>
+          </ion-row>
+          <ion-row justify-content-center>
+            <img class="howto" src="../../assets/imgs/howToScreenShots/hostSongList.png">
+          </ion-row>
+          <ion-row text-justify>
+            <p>
+              As the host, you won’t be voting, but you can add and delete songs from the list.
+              Swipe either direction to delete a song. If you see a
+              duplicate or a song that has many down votes, you might decide you won’t
+              play this one and delete it. Please make sure to delete duplicate songs that have
+              the identical song title and artist name (or it will cause an error).
+              With great power comes great responsibility.
+              If you take your guests' input into consideration, you should have a
+              successful playlist!
+            </p>
+          </ion-row>
+          <ion-row text-justify>
+            <p>
+              As the host, you also have the ability to end the party. If you press the
+              X in the top right corner, this will give you this pop up option to end the
+              party, which will kick all the guests out, and delete your saved song list.
+              Make sure to tell your guests when you are ending the party so that they
+              cannot add more songs.
+              Make sure that you are certain when you want to end the party!
+            </p>
+          </ion-row>
+          <ion-row justify-content-center>
+            <img margin-bottom="20px" class="howto" src="../../assets/imgs/howToScreenShots/hostEndParty.png">
+          </ion-row>
+        </ion-col>
+      </ion-grid>
+  </ion-slide>
+
+  <ion-slide>
+    <ion-grid>
+        <ion-col>
+          <p id = "guest">
+            <ion-row text-center>
+              <ion-title>GUEST</ion-title>
+            </ion-row>
+          </p>
+          <ion-row text-justify>
+            <p>
+              As a guest at this party, after signing in, you will see a song list page.
+              This page may have songs in it already, or it may not. The host can add songs
+              they want to play, and the guests can add song suggestions!
+            </p>
+          </ion-row>
+          <ion-row justify-content-center>
+            <img class="howto" src="../../assets/imgs/howToScreenShots/guestSongList.png">
+          </ion-row>
+          <ion-row text-justify>
+            <p>
+              As a guest, you also have the ability to vote on the songs on the list. You will
+              see your votes, along with those of other guests, show up here. To vote, swipe
+              toward the vote display that you want to do.
+            </p>
+          </ion-row>
+          <ion-row text-center justify-content-center>
+            <p>
           <span class="bigger">
             SWIPE LEFT TO UP VOTE
           </span>
-        </p>
-      </ion-row>
-      <ion-row justify-content-center>
-        <img margin-bottom="20px" class="howto" src="../../assets/imgs/howToScreenShots/upVote.png">
-      </ion-row>
-      <ion-row text-center justify-content-center>
-        <p>
+            </p>
+          </ion-row>
+          <ion-row justify-content-center>
+            <img margin-bottom="20px" class="howto" src="../../assets/imgs/howToScreenShots/upVote.png">
+          </ion-row>
+          <ion-row text-center justify-content-center>
+            <p>
           <span class="bigger">
             SWIPE RIGHT TO DOWN VOTE
           </span>
-        </p>
-      </ion-row>
-      <ion-row justify-content-center>
-        <img class="howto" src="../../assets/imgs/howToScreenShots/downVote.png">
-      </ion-row>
-      <ion-row text-justify>
-        <p>
-          If you decide that you want to leave the party, or stop being a guest in
-          that room, click the X in the top right corner.
-        </p>
-      </ion-row>
-      <ion-row justify-content-center>
-        <img margin-bottom="20px" class="howto" src="../../assets/imgs/howToScreenShots/guestExitRoom.png">
-      </ion-row>
-      <p id = "add_song">
-      <ion-row text-center>
-        <ion-title>ADD SONG</ion-title>
-      </ion-row>
-      </p>
-      <ion-row text-justify>
-        <p>
-          To add a song as a host or guest, click the green + button in the bottom right
-          corner. This will bring up this Add Song page. This page allows you to type
-          in the name of a song and the artist that you want to add to the song list!
-        </p>
-      </ion-row>
-      <ion-row justify-content-center>
-        <img class="howto" src="../../assets/imgs/howToScreenShots/addSong.png">
-      </ion-row>
-      <ion-row text-justify>
-        <p>
-          Don't remember the song name or just want to listen to any songs by an artist?
-          Not a problem! Just fill in one field.
-          But not filling in any field or
-          filling in ridiculously long or non-alphanumeric inputs will be considered
-          invalid. So put some real song names in there! This will be the best way to
-          get your song suggestions seen, voted on, and played!
-        </p>
-      </ion-row>
-      <ion-row text-justify>
-        <p>
-          Thanks for reading, and enjoy Music Maven! Your musical wisdom will be shared
-          with those at the party, and we hope it will be a lot of fun!!
-        </p>
-      </ion-row>
-      <div style="clear:both; height:100px"></div>
-    </ion-col>
-  </ion-grid>
+            </p>
+          </ion-row>
+          <ion-row justify-content-center>
+            <img class="howto" src="../../assets/imgs/howToScreenShots/downVote.png">
+          </ion-row>
+          <ion-row text-justify>
+            <p>
+              If you decide that you want to leave the party, or stop being a guest in
+              that room, click the X in the top right corner.
+            </p>
+          </ion-row>
+          <ion-row justify-content-center>
+            <img margin-bottom="20px" class="howto" src="../../assets/imgs/howToScreenShots/guestExitRoom.png">
+          </ion-row>
+        </ion-col>
+      </ion-grid>
+  </ion-slide>
+
+  <ion-slide>
+    <ion-grid>
+        <ion-col>
+          <p id = "add_song">
+            <ion-row text-center>
+              <ion-title>ADD SONG</ion-title>
+            </ion-row>
+          </p>
+          <ion-row text-justify>
+            <p>
+              To add a song as a host or guest, click the green + button in the bottom right
+              corner. This will bring up this Add Song page. This page allows you to type
+              in the name of a song and the artist that you want to add to the song list!
+            </p>
+          </ion-row>
+          <ion-row justify-content-center>
+            <img class="howto" src="../../assets/imgs/howToScreenShots/addSong.png">
+          </ion-row>
+          <ion-row text-justify>
+            <p>
+              Don't remember the song name or just want to listen to any songs by an artist?
+              Not a problem! Just fill in one field.
+              But not filling in any field or
+              filling in ridiculously long or non-alphanumeric inputs will be considered
+              invalid. So put some real song names in there! This will be the best way to
+              get your song suggestions seen, voted on, and played!
+            </p>
+          </ion-row>
+          <ion-row text-justify>
+            <p>
+              Thanks for reading, and enjoy Music Maven! Your musical wisdom will be shared
+              with those at the party, and we hope it will be a lot of fun!!
+            </p>
+          </ion-row>
+          <div style="clear:both; height:100px"></div>
+        </ion-col>
+      </ion-grid>
+  </ion-slide>
+</ion-slides>
 </ion-content>
+

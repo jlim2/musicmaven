@@ -5,4 +5,13 @@ page-howto {
     height:350px;
     width:200px;
   }
+
+  ion-slide {
+    background-color: map_get($colors, background);
+    display: block !important;
+  }
+
+  .howtoslide {
+    background-color: map_get($colors, background);
+  }
 }
