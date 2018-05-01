@@ -29,7 +29,7 @@ export class HostSongListPage {
               public fBProvider: FirebaseProvider,
               private sDProvider: SessionDataProvider) {
     this.addSongButton = AddSongPage;
-    this.roomId = this.sDProvider.getRoomCode(); //Gets the roomId from the Session Data Provider
+    this.roomId = this.sDProvider.getRoomCode(); //Gets the roomCode from the Session Data Provider
   }
 
   ionViewDidLoad() {
@@ -89,7 +89,8 @@ export class HostSongListPage {
   }
 
   /**
-   * Delays async functions
+   * Delays async functions. Gives it time to perform the animation before
+   * the song is deleted.
    * @param {number} ms
    * @returns {Promise<any>}
    */
@@ -98,7 +99,7 @@ export class HostSongListPage {
   }
 
   /**
-   * Deletes a song from the list (and the Firebase)
+   * Deletes a song from the list (and the Firebase).
    * @param song
    */
   async deleteSong(song) {
