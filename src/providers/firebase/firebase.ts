@@ -18,28 +18,11 @@ export class FirebaseProvider {
 
   /**
    * Generates a room with the generated roomId on the Firebase.
-   * @param roomId  a string of numbers and alphabets unique to each room
+   * @param roomCode  a string of numbers and alphabets unique to each room
    */
-  genRoom(roomId) {
-    this.afDB.database.ref('/').child('rooms').child(roomId).set({id: roomId});
+  genRoom(roomCode) {
+    this.afDB.database.ref('/').child('rooms').child(roomCode).set({id: roomCode});
   }
-
-  // /**
-  //  * Getter for the list of rooms from the Firebase
-  //  * @returns {AngularFireList<T>}
-  //  */
-  // getRoomDir() {
-  //   return this.afDB.list('/rooms/');
-  // }
-
-  // /**
-  //  * Getter for the Firebase reference of the given room
-  //  * @param roomCode
-  //  * @returns {firebase.database.Reference}
-  //  */
-  // getRoomRef(roomCode) {
-  //   return this.afDB.database.ref('/rooms/').child(roomCode);
-  // }
 
   /**
    * Getter for the Room object of the given room from Firebase
@@ -65,23 +48,15 @@ export class FirebaseProvider {
     })
   }
 
-  // /**
-  //  * Generates room with the roomCode on Firebase
-  //  * @param roomCode
-  //  */
-  // pushRoom(roomCode) {
-  //   this.afDB.list('/rooms/').push(roomCode);
-  // }
-
   /**
    * Push the song that the user provided
    * @param song - a Song object
-   * @param roomId - roomId of the room that the host or the guest is in
+   * @param roomCode - roomCode of the room that the host or the guest is in
    */
-  pushSong(song, roomId){
-    let promise = this.afDB.list("rooms/"+roomId+"/songs").push(song);
+  pushSong(song, roomCode){
+    let promise = this.afDB.list("rooms/"+roomCode+"/songs").push(song);
     song.fbKey = promise.key;
-    this.afDB.database.ref('/').child('rooms').child(roomId).child('songs').child(promise.key).update({fbKey: promise.key});
+    this.afDB.database.ref('/').child('rooms').child(roomCode).child('songs').child(promise.key).update({fbKey: promise.key});
     console.log("Attempted to push: " + song.title);
     return promise;
   }
@@ -89,11 +64,11 @@ export class FirebaseProvider {
   /**
    * Updates the up or down votes of a song in firebase
    * @param song - a Song object
-   * @param roomId - ID of current room
+   * @param roomCode - ID of current room
    * @param isUpVote - boolean, true if the vote is an upvote, false if down vote
    */
-  updateVote(song, roomId, isUpVote){
-    const songRef = this.afDB.database.ref('/').child('rooms').child(roomId).child('songs').child(song.fbKey);
+  updateVote(song, roomCode, isUpVote){
+    const songRef = this.afDB.database.ref('/').child('rooms').child(roomCode).child('songs').child(song.fbKey);
     if(isUpVote) {
       songRef.child('upVotes').transaction(function(currentUpVotes){
         return currentUpVotes + 1;
@@ -109,11 +84,11 @@ export class FirebaseProvider {
   /**
    * Switches the vote of a song that the user already has voted on.
    * @param song - a Song object
-   * @param roomId - ID of current room
+   * @param roomCode - ID of current room
    * @param switchToUpVote - boolean, true if switching to an upvote, false if switching to a downvote
    */
-  switchVote(song, roomId, switchToUpVote){
-    const songRef = this.afDB.database.ref('/').child('rooms').child(roomId).child('songs').child(song.fbKey);
+  switchVote(song, roomCode, switchToUpVote){
+    const songRef = this.afDB.database.ref('/').child('rooms').child(roomCode).child('songs').child(song.fbKey);
     if(switchToUpVote){
       songRef.transaction(function(currentSong){
         currentSong.downVotes-=1;
@@ -132,40 +107,40 @@ export class FirebaseProvider {
 
   /**
    * Deletes the room when the party is over.
-   * @param roomId - ID of the room to be deleted
+   * @param roomCode - ID of the room to be deleted
    */
-  deleteRoom(roomId) {
-    const roomRef = this.afDB.database.ref('/').child('rooms').child(roomId);
-    console.log("roomId: "+ roomId + " roomRef on deleteRoom: "+ roomRef);
+  deleteRoom(roomCode) {
+    const roomRef = this.afDB.database.ref('/').child('rooms').child(roomCode);
+    console.log("roomId: "+ roomCode + " roomRef on deleteRoom: "+ roomRef);
     roomRef.remove();
   }
 
   /**
    * Deletes the specified song from the unique room.
    * @param song  - Song object to be deleted
-   * @param roomId - ID of room the song to be deleted from
+   * @param roomCode - ID of room the song to be deleted from
    */
-  deleteSong(song, roomId) {
-    const songRef = this.afDB.database.ref('/').child('rooms').child(roomId).child('songs').child(song.fbKey);
+  deleteSong(song, roomCode) {
+    const songRef = this.afDB.database.ref('/').child('rooms').child(roomCode).child('songs').child(song.fbKey);
     songRef.remove();
   }
 
   /**
-   * fetches a list of roomCodes (roomIds) that would be used to verify if the
+   * fetches a list of roomCodes that would be used to verify if the
    * user is trying to enter the correct room
-   * @returns {any[]} - a list of room ids
+   * @returns {any[]} - a list of room codes
    */
-  getRoomIdList() {
+  getRoomCodeList() {
     let i = 0;
-    let idList = [];
+    let codeList = [];
     this.afDB.list("/rooms").valueChanges()
       .subscribe(list =>{
-        list.forEach(item => {
-          idList[i] = item['id'];
+        list.forEach(room => {
+          codeList[i] = room['id'];
           i++;
         });
       });
-    return idList;
+    return codeList;
   }
 
 }

@@ -118,14 +118,6 @@ export class GuestSongListPage {
     alert.present();
   }
 
-  // /**
-  //  * Deletes a song from the list (and the Firebase)
-  //  * @param song - Song object to be deleted
-  //  */
-  // deleteSong(song) {
-  //   this.fBProvider.deleteSong(song, this.roomId);
-  // }
-
   /**
    * Votes on a song.
    * @param song - Song object to be voted on

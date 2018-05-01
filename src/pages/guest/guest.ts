@@ -40,7 +40,7 @@ export class GuestPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad GuestPage');
-    this.idList = this.fBProvider.getRoomIdList();
+    this.idList = this.fBProvider.getRoomCodeList();
   }
 
   /**
