@@ -5,4 +5,26 @@ page-howto {
     height:350px;
     width:200px;
   }
+
+  ion-slide {
+    background-color: map_get($colors, background);
+    display: block !important;
+  }
+
+  .howtoslide {
+    background-color: map_get($colors, background);
+  }
+
+  .howtobutton {
+    width: 50vw;
+  }
+
+  .blank {
+    height: 5vh !important;
+  }
+
+  .swiper-slide {
+    overflow-y: scroll;
+    display: block;
+  }
 }
