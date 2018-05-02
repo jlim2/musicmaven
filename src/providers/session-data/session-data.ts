@@ -39,12 +39,4 @@ export class SessionDataProvider {
     }
     return this.songVotes[song.fbKey];
   }
-
-  /**
-   * Sets the current user as the host
-   * @param hostBoolInput
-   */
-  setHost(hostBoolInput) {
-    this.isHost = hostBoolInput;
-  }
 }

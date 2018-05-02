@@ -82,7 +82,7 @@ export class HostGuestPage {
     this.roomCode = this.genRoomCode();
     this.fBProvider.genRoom(this.roomCode);
     this.sDProvider.roomCode = this.roomCode;
-    this.sDProvider.setHost(true);
+    this.sDProvider.isHost = true;
     //Set HostSongPage as root (https://stackoverflow.com/questions/37296999/ionic-2-disabling-back-button-for-a-specific-view)
     let alert = this.alertCtrl.create({
       title: 'Room  "'+this.roomCode+'" Created',
