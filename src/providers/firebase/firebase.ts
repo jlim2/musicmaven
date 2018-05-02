@@ -12,6 +12,7 @@ import { Song } from '../../interfaces/song';
 
 @Injectable()
 export class FirebaseProvider {
+  public roomCodeList;
   constructor(public afDB: AngularFireDatabase) {
     console.log('Hello FirebaseProvider Provider');
   }
@@ -140,7 +141,22 @@ export class FirebaseProvider {
           i++;
         });
       });
+    this.roomCodeList = codeList;
     return codeList;
+  }
+
+  /**
+   * Creates a list of available room codes. Updated as rooms in firebase are updated.
+   */
+  updateRoomCodeList() {
+    let i = 0;
+    this.roomCodeList.subscribe(roomList =>{
+      roomList.forEach(room => {
+        this.roomCodeList[i] = room['roomCode'];
+        i++;
+      });
+    });
+    console.log(this.roomCodeList);
   }
 
 }

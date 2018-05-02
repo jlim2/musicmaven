@@ -43,20 +43,6 @@ export class GuestPage {
   }
 
   /**
-   * Creates a list of available room codes
-   */
-  makeIdList() {
-    let i = 0;
-    this.room.subscribe(roomList =>{
-      roomList.forEach(room => {
-        this.roomCodeList[i] = room['roomCode'];
-        i++;
-      });
-    });
-    console.log(this.roomCodeList);
-  }
-
-  /**
    * Checks if the user input of room code is one of the room codes in the Firebase.
    * @param roomInput - User input room code
    * @param roomCodeList - list of room codes

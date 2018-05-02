@@ -42,7 +42,7 @@ export class HostSongListPage {
    */
   goToAddSongPage() {
     console.log("roomCode going to add song page:" + this.roomCode);
-    this.navCtrl.push(AddSongPage, {roomId: this.roomCode});
+    this.navCtrl.push(AddSongPage, {roomCode: this.roomCode});
   }
 
   /**
