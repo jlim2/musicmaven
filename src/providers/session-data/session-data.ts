@@ -1,12 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FirebaseProvider } from '../firebase/firebase';
 
 /**
- * Provider that handles current user and session data.
- *
- * See https://angular.io/guide/dependency-injection for more info on providers
- * and Angular DI.
+ * Provider that handles room and song data for current user.
 */
 @Injectable()
 export class SessionDataProvider {
@@ -14,7 +10,7 @@ export class SessionDataProvider {
   isHost: boolean;
   songVotes : Object;
 
-  constructor(public http: HttpClient, public fBProvider: FirebaseProvider) {
+  constructor(public http: HttpClient) {
     console.log('Hello SessionDataProvider Provider');
     this.songVotes = {};
   }

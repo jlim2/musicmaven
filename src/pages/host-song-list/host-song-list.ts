@@ -8,9 +8,6 @@ import { HostGuestPage } from "../host-guest/host-guest";
 
 /**
  * Displays the room-specific song list for the host. Allows deleting songs.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
  */
 
 @IonicPage()
@@ -29,13 +26,12 @@ export class HostSongListPage {
               public fBProvider: FirebaseProvider,
               private sDProvider: SessionDataProvider) {
     this.addSongButton = AddSongPage;
-    this.roomCode = this.sDProvider.roomCode; //Gets the roomCode from the Session Data Provider
+    this.roomCode = this.sDProvider.roomCode;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HostSongListPage');
     console.log('Current room: ' +this.roomCode);
-    console.log('Host?: '+this.sDProvider.isHost);
     this.roomTitle = "Host: "+ this.roomCode;
     this.songList = this.fBProvider.getSortedSongList(this.roomCode).valueChanges();
 
