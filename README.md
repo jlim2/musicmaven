@@ -12,7 +12,7 @@ Old repository: https://github.com/ahelfins/Democratic-DJ
 
 
 # System Context Diagram
-![System Context Diagram](src/assets/imgs/Diagram 1_ System Context.jpg)
+![System Context Diagram](src/assets/imgs/Diagram1_SystemContext.jpg)
 
 # Container Diagram
-![Container Diagram](src/assets/imgs/Diagram 2_ Container.jpg)
+![Container Diagram](src/assets/imgs/Diagram2_Container.jpg)
