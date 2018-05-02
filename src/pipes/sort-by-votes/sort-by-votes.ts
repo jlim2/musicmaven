@@ -16,7 +16,8 @@ export class SortByVotesPipe implements PipeTransform {
   transform(values: any, ...args) {
     if(values) {
       return values.reverse();
-    } else {
+    }
+    else {
       console.log("No Values to reverse!")
     }
   }

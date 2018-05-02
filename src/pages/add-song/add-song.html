@@ -14,12 +14,7 @@
   </ion-navbar>
 </ion-header>
 
-
-
-
 <ion-content padding class="background">
-  <!--TODO: id could be redundant, test and remove if so-->
-
   <ion-grid>
     <ion-col>
       <ion-row id="blank1"></ion-row>
@@ -35,26 +30,10 @@
           <ion-input class="input" id="artistInput" type="text" [(ngModel)]="artistName"></ion-input>
         </ion-item>
       </ion-row>
-
       <ion-row id="blank2"></ion-row>
       <ion-row>
         <button ion-button block type="submit" (click)="addSongToFB(songName, artistName);" (click)="goToSongListPage()">Add to Song List</button>
       </ion-row>
-      <!-- <ion-row>
-        <ion-searchbar (ionInput)="searchSpotify($event)"></ion-searchbar>
-        <div *ngIf="searchResults?.length>0">
-          <ion-list *ngFor="let i of searchResults">
-            <ion-item>
-              <h2>{{i.name}}</h2>
-              <ion-badge color="primary">Popularity: {{i.popularity}}</ion-badge>
-              <button ion-button color="secondary">Add</button>
-            </ion-item>
-          </ion-list>
-        </div>
-      </ion-row> -->
-      <!--<ion-row>
-        <button ion-button block [navPush]="HostSongListButton" class="button">See Host Song List</button>
-      </ion-row>-->
     </ion-col>
   </ion-grid>
 </ion-content>

@@ -5,14 +5,9 @@ import { HostSongListPage } from "../host-song-list/host-song-list";
 import { HowtoPage } from '../howto/howto';
 import { FirebaseProvider } from "../../providers/firebase/firebase";
 import { SessionDataProvider } from "../../providers/session-data/session-data";
-import { Observable } from "rxjs/Observable";
-import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
 
 /**
  * The home page. User can select to be a host or a guest.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
  */
 
 @IonicPage()
@@ -25,8 +20,6 @@ export class HostGuestPage {
   GuestButton: any;
   HowtoButton: any;
   public roomCode: string;
-  // roomList: AngularFireList<any>;
-  // rooms: Observable<any[]>;
   roomCodeList: Array<String>;
   found: number = -1;
   ROOMCODE_LENGTH: number = 5;
@@ -64,8 +57,6 @@ export class HostGuestPage {
   genRoomCode() {
     var text = "";
     var possible = "abcdefghijklmnopqrstuvwxyz0123456789";
-
-    //TODO: make the length a constant to avoid hardcoding
     for (var i = 0; i < this.ROOMCODE_LENGTH; i++)
       text += possible.charAt(Math.floor(Math.random() * possible.length));
     return text;

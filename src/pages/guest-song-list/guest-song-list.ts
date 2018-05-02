@@ -5,7 +5,6 @@ import { FirebaseProvider } from "../../providers/firebase/firebase"
 import { SessionDataProvider } from "../../providers/session-data/session-data";
 import { HostGuestPage } from "../host-guest/host-guest";
 
-
 /**
  * Displays the room-specific song list for Guest. Allows for voting on songs.
  */
@@ -16,7 +15,7 @@ import { HostGuestPage } from "../host-guest/host-guest";
   templateUrl: 'guest-song-list.html'})
 
 export class GuestSongListPage {
-  addSongButton: any;
+  AddSongButton: any;
   public roomCode: string;
   roomTitle: String;
   songList: any;
@@ -26,7 +25,7 @@ export class GuestSongListPage {
               public alertCtrl: AlertController,
               public fBProvider: FirebaseProvider,
               private sDProvider: SessionDataProvider) {
-    this.addSongButton = AddSongPage;
+    this.AddSongButton = AddSongPage;
     this.roomCode = this.sDProvider.roomCode;
     this.room = this.fBProvider.getRoom(this.roomCode).valueChanges();
     this.kickedoutConfirm(); // kick out the guest with an alert if the party has ended

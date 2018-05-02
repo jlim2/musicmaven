@@ -23,7 +23,7 @@ export class GuestPage {
   roomCode: string = "";
   roomList: AngularFireList<any>;
   room: Observable<any[]>;
-  roomCodeList: Array<String>;
+  roomCodeList: Array<string>;
 
   constructor(
     public navCtrl: NavController,
@@ -34,7 +34,7 @@ export class GuestPage {
     this.EnterRoomButton = GuestSongListPage;
     this.roomList = this.afDB.list('/rooms');
     this.room = this.roomList.valueChanges();
-    this.roomCodeList = new Array<String>();
+    this.roomCodeList = new Array<string>();
   }
 
   ionViewDidLoad() {
@@ -47,13 +47,12 @@ export class GuestPage {
    */
   makeIdList() {
     let i = 0;
-    this.afDB.list("/rooms").valueChanges()
-      .subscribe(roomList =>{
-        roomList.forEach(room => {
-          this.roomCodeList[i] = room['roomCode'];
-          i++;
-        });
+    this.room.subscribe(roomList =>{
+      roomList.forEach(room => {
+        this.roomCodeList[i] = room['roomCode'];
+        i++;
       });
+    });
     console.log(this.roomCodeList);
   }
 
@@ -62,7 +61,7 @@ export class GuestPage {
    * @param roomInput - User input room code
    * @param roomCodeList - list of room codes
    */
-  isCorrectRoomInput(roomInput: string, roomCodeList: String[]) {
+  isCorrectRoomInput(roomInput: string, roomCodeList: string[]) {
     let cleanedRoomInput = roomInput.toLowerCase(); // Make the input case-insensitive
     console.log("roomInput", cleanedRoomInput);
     let found = roomCodeList.indexOf(cleanedRoomInput);
@@ -75,7 +74,8 @@ export class GuestPage {
       this.navCtrl.setRoot(GuestSongListPage, {roomCode: roomCodeList[found]}).then(() => {
         this.navCtrl.popToRoot();
       });
-    } else {
+    }
+    else {
       let alert = this.alertCtrl.create({
         title: 'Room not found!',
         message: 'The room code provided did not match any current rooms.',

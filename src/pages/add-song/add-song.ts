@@ -23,14 +23,13 @@ import { HostGuestPage } from "../host-guest/host-guest";
 export class AddSongPage {
   GuestSongListButton : any;
   HostSongListButton : any;
-
   roomCode : string;
   title: string;
-
   room: any;
+  MAX_SONG_LENGTH: number = 50;
+  MAX_ARTIST_LENGTH: number = 50;
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
               public alertCtrl: AlertController,
               public fBProvider: FirebaseProvider,
               private sDProvider: SessionDataProvider) {
@@ -64,7 +63,8 @@ export class AddSongPage {
     if(this.inputIsNotNull(song, artist)) {
       cleanSong = this.cleanPuncSpaceFromInputItem(song);
       cleanArtist = this.cleanPuncSpaceFromInputItem(artist);
-    } else {
+    }
+    else {
       return false;
     }
     if(this.inputIsNotNull(cleanSong, cleanArtist)) {
@@ -74,7 +74,7 @@ export class AddSongPage {
       if(cleanArtist == null || cleanArtist === "") {
         artist = "1";
       }
-      console.log("Cleaned inputs are not null")
+      console.log("Cleaned inputs are not null");
       return this.inputIsNotTooLong(song, artist);
     } else {
       return false;
@@ -93,7 +93,8 @@ export class AddSongPage {
     if(!((cleanSong === "" || cleanSong == null) && (cleanArtist === "" || cleanArtist == null))) {
       console.log("Is not null: " + "+++"+song+"+++" + " - " + "+++"+artist+"+++");
       return true;
-    } else {
+    }
+    else {
       return false;
     }
   }
@@ -106,9 +107,10 @@ export class AddSongPage {
    */
   inputIsNotTooLong(song: string, artist: string) {
     //At the moment too long has been determined to be >50 characters
-    if(song.length < 50 && artist.length < 50) {
+    if(song.length < this.MAX_SONG_LENGTH && artist.length < this.MAX_ARTIST_LENGTH) {
       return true;
-    } else {
+    }
+    else {
       return false;
     }
   }
@@ -124,7 +126,8 @@ export class AddSongPage {
       var cleanInput = noSpaceInput.replace(/[^0-9a-z]/gi, '');
       console.log(cleanInput);
       return cleanInput;
-    } else {
+    }
+    else {
       return "";
     }
   }
@@ -172,6 +175,7 @@ export class AddSongPage {
    * Adds the song the user input to the Firebase under the specific room
    * where the user is located.
    * @param songInput - user input of the song name
+   * @param artistInput - user input of the artist name
    */
   addSongToFB(songInput, artistInput) {
     if(this.isValidInput(songInput, artistInput)) {
@@ -224,7 +228,8 @@ export class AddSongPage {
       this.navCtrl.setRoot(HostSongListPage, {roomId: this.roomCode}).then(() => {
         this.navCtrl.popToRoot();
       });
-    } else {
+    }
+    else {
       this.navCtrl.setRoot(GuestSongListPage, {roomId: this.roomCode}).then(() => {
         this.navCtrl.popToRoot();
       });
