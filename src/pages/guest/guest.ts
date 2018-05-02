@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { GuestSongListPage } from '../guest-song-list/guest-song-list';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { AlertController } from 'ionic-angular';
 import { SessionDataProvider } from "../../providers/session-data/session-data";
 import { FirebaseProvider } from "../../providers/firebase/firebase";
@@ -22,12 +21,10 @@ export class GuestPage {
   EnterRoomButton: any;
   roomCodeList: Array<string>;
 
-  constructor(
-    public navCtrl: NavController,
-    public afDB: AngularFireDatabase,
-    public alertCtrl: AlertController,
-    private sDProvider: SessionDataProvider,
-    public fBProvider: FirebaseProvider) {
+  constructor(public navCtrl: NavController,
+              public alertCtrl: AlertController,
+              private sDProvider: SessionDataProvider,
+              public fBProvider: FirebaseProvider) {
     this.EnterRoomButton = GuestSongListPage;
     this.roomCodeList = new Array<string>();
   }
@@ -45,7 +42,7 @@ export class GuestPage {
     let cleanedRoomInput = roomInput.toLowerCase(); // Make the input case-insensitive
     console.log("roomInput", cleanedRoomInput);
     let found = this.roomCodeList.indexOf(cleanedRoomInput);
-    console.log("found", found);
+    console.log("roomFoundInd", found);
 
     //if roomCode matches a room, push to room, otherwise show an alert
     if (found >= 0) {
@@ -59,7 +56,7 @@ export class GuestPage {
     }
     else {
       let alert = this.alertCtrl.create({
-        title: 'Room not found!',
+        title: 'Room not roomFoundInd!',
         message: 'The room code provided did not match any current rooms.',
         buttons: ["OK"]
       });

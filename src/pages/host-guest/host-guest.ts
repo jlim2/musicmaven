@@ -21,14 +21,13 @@ export class HostGuestPage {
   HowtoButton: any;
   public roomCode: string;
   roomCodeList: Array<String>;
-  found: number = -1;
+  roomFoundInd: number = -1;
   ROOMCODE_LENGTH: number = 5;
 
-  constructor(
-    public navCtrl: NavController,
-    public alertCtrl: AlertController,
-    public fBProvider: FirebaseProvider,
-    private sDProvider: SessionDataProvider) {
+  constructor(public navCtrl: NavController,
+              public alertCtrl: AlertController,
+              public fBProvider: FirebaseProvider,
+              private sDProvider: SessionDataProvider) {
       this.HostButton = HostSongListPage;
       this.GuestButton = GuestPage;
       this.HowtoButton = HowtoPage;
@@ -77,7 +76,6 @@ export class HostGuestPage {
       buttons: ["OK"]
     });
     alert.present();
-    // Set HostSongListPage as root (https://stackoverflow.com/questions/37296999/ionic-2-disabling-back-button-for-a-specific-view)
     this.navCtrl.setRoot(HostSongListPage, {roomCode: this.roomCode}).then(() => {
       this.navCtrl.popToRoot();
     });

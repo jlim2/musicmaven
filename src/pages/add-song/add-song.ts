@@ -33,17 +33,11 @@ export class AddSongPage {
               public alertCtrl: AlertController,
               public fBProvider: FirebaseProvider,
               private sDProvider: SessionDataProvider) {
-
     this.GuestSongListButton = GuestSongListPage;
     this.HostSongListButton = HostSongListPage;
-
     this.roomCode = this.sDProvider.roomCode;
-
     this.room = this.fBProvider.getRoom(this.roomCode).valueChanges();
-
     this.kickedoutConfirm(); // kick out the guest if the party has ended
-
-
   }
 
   ionViewDidLoad() {
