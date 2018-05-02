@@ -11,3 +11,8 @@ Old repository: https://github.com/ahelfins/Democratic-DJ
 # Installation Guide
 
 
+# System Context Diagram
+![System Context Diagram](src/assets/imgs/Diagram 1_ System Context.jpg)
+
+# Container Diagram
+![Container Diagram](src/assets/imgs/Diagram 2_ Container.jpg)
