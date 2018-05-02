@@ -25,23 +25,20 @@ export class HostGuestPage {
   GuestButton: any;
   HowtoButton: any;
   public roomCode: string;
-  roomList: AngularFireList<any>;
-  rooms: Observable<any[]>;
+  // roomList: AngularFireList<any>;
+  // rooms: Observable<any[]>;
   roomCodeList: Array<String>;
   found: number = -1;
   ROOMCODE_LENGTH: number = 5;
 
   constructor(
     public navCtrl: NavController,
-    public afDB: AngularFireDatabase,
     public alertCtrl: AlertController,
     public fBProvider: FirebaseProvider,
     private sDProvider: SessionDataProvider) {
       this.HostButton = HostSongListPage;
       this.GuestButton = GuestPage;
       this.HowtoButton = HowtoPage;
-      this.roomList = this.afDB.list('/rooms');
-      this.rooms = this.roomList.valueChanges();
       this.roomCodeList = new Array<String>(2);
   }
 
@@ -83,13 +80,13 @@ export class HostGuestPage {
     this.fBProvider.genRoom(this.roomCode);
     this.sDProvider.roomCode = this.roomCode;
     this.sDProvider.isHost = true;
-    //Set HostSongPage as root (https://stackoverflow.com/questions/37296999/ionic-2-disabling-back-button-for-a-specific-view)
     let alert = this.alertCtrl.create({
       title: 'Room  "'+this.roomCode+'" Created',
       message: 'Tell your guests this room code! Enjoy the party.',
       buttons: ["OK"]
     });
     alert.present();
+    // Set HostSongListPage as root (https://stackoverflow.com/questions/37296999/ionic-2-disabling-back-button-for-a-specific-view)
     this.navCtrl.setRoot(HostSongListPage, {roomCode: this.roomCode}).then(() => {
       this.navCtrl.popToRoot();
     });
