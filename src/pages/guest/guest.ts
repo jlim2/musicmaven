@@ -20,9 +20,6 @@ import { FirebaseProvider } from "../../providers/firebase/firebase";
 })
 export class GuestPage {
   EnterRoomButton: any;
-  roomCode: string = "";
-  roomList: AngularFireList<any>;
-  room: Observable<any[]>;
   roomCodeList: Array<string>;
 
   constructor(
@@ -32,8 +29,6 @@ export class GuestPage {
     private sDProvider: SessionDataProvider,
     public fBProvider: FirebaseProvider) {
     this.EnterRoomButton = GuestSongListPage;
-    this.roomList = this.afDB.list('/rooms');
-    this.room = this.roomList.valueChanges();
     this.roomCodeList = new Array<string>();
   }
 
@@ -45,19 +40,20 @@ export class GuestPage {
   /**
    * Checks if the user input of room code is one of the room codes in the Firebase.
    * @param roomInput - User input room code
-   * @param roomCodeList - list of room codes
    */
-  isCorrectRoomInput(roomInput: string, roomCodeList: string[]) {
+  isCorrectRoomInput(roomInput: string) {
     let cleanedRoomInput = roomInput.toLowerCase(); // Make the input case-insensitive
     console.log("roomInput", cleanedRoomInput);
-    let found = roomCodeList.indexOf(cleanedRoomInput);
+    let found = this.roomCodeList.indexOf(cleanedRoomInput);
     console.log("found", found);
 
-    if (found >= 0) {     //if roomCode matches a room, push to room, otherwise show an alert
+    //if roomCode matches a room, push to room, otherwise show an alert
+    if (found >= 0) {
       this.sDProvider.roomCode = cleanedRoomInput;
       this.sDProvider.isHost = false;
+
       //Set GuestSongPage as root https://stackoverflow.com/questions/37296999/ionic-2-disabling-back-button-for-a-specific-view
-      this.navCtrl.setRoot(GuestSongListPage, {roomCode: roomCodeList[found]}).then(() => {
+      this.navCtrl.setRoot(GuestSongListPage, {roomCode: this.roomCodeList[found]}).then(() => {
         this.navCtrl.popToRoot();
       });
     }
