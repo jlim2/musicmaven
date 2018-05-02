@@ -8,11 +8,20 @@ This is a project for COMP225: Software Development at Macalester College.
 
 Old repository: https://github.com/ahelfins/Democratic-DJ
 
-# Installation Guide
+## Installation Guide
+
+## Issues
+* Negative song votes appear occasionally
+* Multiple kickout alerts prompted for Guest exits and re-enters the same room
+* Kickout alert prompted for Guest who exitted the room already
+* Guest does not get kicked out when adding a song at the same time as Host ending the party
+
+## Features
 
 
-# System Context Diagram
+## System Context Diagram
 ![System Context Diagram](src/assets/imgs/Diagram1_SystemContext.jpg)
 
-# Container Diagram
+## Container Diagram
 ![Container Diagram](src/assets/imgs/Diagram2_Container.jpg)
+
