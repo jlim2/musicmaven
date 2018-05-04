@@ -56,7 +56,7 @@ export class GuestPage {
     }
     else {
       let alert = this.alertCtrl.create({
-        title: 'Room not roomFoundInd!',
+        title: 'Room not found!',
         message: 'The room code provided did not match any current rooms.',
         buttons: ["OK"]
       });
