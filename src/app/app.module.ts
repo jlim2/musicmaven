@@ -1,7 +1,6 @@
-///<reference path="../pages/howto/howto.ts"/>
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { AngularFireModule } from 'angularfire2';
@@ -19,8 +18,6 @@ import { SongItemComponent } from '../components/song-item/song-item'
 import { HostSongItemComponent } from '../components/host-song-item/host-song-item';
 import 'web-animations-js/web-animations.min';
 import { SortByVotesPipe } from '../pipes/sort-by-votes/sort-by-votes'
-
-
 import { HttpClientModule } from '@angular/common/http'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 

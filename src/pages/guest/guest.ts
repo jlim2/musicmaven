@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { GuestSongListPage } from '../guest-song-list/guest-song-list';
-import { AngularFireDatabase } from 'angularfire2/database';
 import { AlertController } from 'ionic-angular';
 import { SessionDataProvider } from "../../providers/session-data/session-data";
 import { FirebaseProvider } from "../../providers/firebase/firebase";

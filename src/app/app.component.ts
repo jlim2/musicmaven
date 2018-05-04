@@ -1,10 +1,7 @@
-//import { Firebase } from '@ionic-native/firebase';
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database'
 import { HostGuestPage } from '../pages/host-guest/host-guest';
 import 'web-animations-js/web-animations.min';
 
