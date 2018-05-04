@@ -11,6 +11,8 @@ Old repository: https://github.com/ahelfins/Democratic-DJ
 ## Features
 
 ## Installation Guide
+### Installing Ionic View
+
 
 ## Issues
 * Negative song votes appear occasionally
