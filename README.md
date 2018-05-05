@@ -9,6 +9,18 @@ This is a project for COMP225: Software Development at Macalester College.
 Old repository: https://github.com/ahelfins/Democratic-DJ
 
 ## Features
+### All
+* analog song input (song title, artist name)
+* animations when voting
+
+### Host
+* make room with unique room code
+* delete song from all people
+* sorted song list by votes
+
+### Guest
+* enter room with the room code
+* vote on songs
 
 ## Installation Guide
 ### Installing on Ionic View
