@@ -4,6 +4,9 @@ DJ and other members of the party are the guests. The DJ can add/delete songs an
 refer to the list to play the songs that the guests want played.
 The guests can add songs and vote up/down on that they have added.
 
+Powered by Ionic to provide cross-platform mobile application that feels natural
+on each user's device.
+
 This is a project for COMP225: Software Development at Macalester College.
 
 Old repository: https://github.com/ahelfins/Democratic-DJ
@@ -33,16 +36,16 @@ press the home button or shake your phone and select "Exit" from the pop-up menu
 ### Installing Directly onto Android or Apple Device
 Unfortunately our app isn't quite ready for this yet, but check back soon!
 
-
 ## Issues
 * Negative song votes appear occasionally
 * Multiple kickout alerts prompted for Guest exits and re-enters the same room
 * Kickout alert prompted for Guest who exitted the room already
 * Guest does not get kicked out when adding a song at the same time as Host ending the party
 
-## System Context Diagram
+## For Developers
+### System Context Diagram
 ![System Context Diagram](src/assets/imgs/Diagram1_SystemContext.jpg)
 
-## Container Diagram
+### Container Diagram
 ![Container Diagram](src/assets/imgs/Diagram2_Container.jpg)
 
