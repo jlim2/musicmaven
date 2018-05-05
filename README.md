@@ -11,12 +11,15 @@ Old repository: https://github.com/ahelfins/Democratic-DJ
 ## Features
 
 ## Installation Guide
-### Installing Ionic View
+### Installing on Ionic View
 As this app is yet to be released, you'll need to run it on the Ionic View app. You can download
 Ionic View on your Android or Apple Phone by simply searching for it on the Google Play Store
 or App Store respectively. Once downloaded, just navigate to the center tab and enter our App
 ID "0b5aa138". Then the app should launch on its own! If you want to exit the app, you either
 press the home button or shake your phone and select "Exit" from the pop-up menu.
+
+### Installing Directly onto Android or Apple Device
+Unfortunately our app isn't quite ready for this yet, but check back soon!
 
 
 ## Issues
